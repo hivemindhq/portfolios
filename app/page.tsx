@@ -34,7 +34,12 @@ export default async function Home() {
             <p className="text-2xl font-medium tracking-tight md:text-left text-center">
               Award-winning FIRST Tech Challenge Portfolios
             </p>
-            <Button variant={"outline"}>Submit yours</Button>
+            <Button
+              onClick={() => toast.info("This feature is coming soon!")}
+              variant={"outline"}
+            >
+              Submit yours
+            </Button>
           </div>
           <div className="grid w-full gap-2">
             <div className="flex items-center justify-between">
