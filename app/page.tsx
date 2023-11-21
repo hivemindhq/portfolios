@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-async-client-component */
 "use client";
 
+import PortfolioCard from "@/components/PortfolioCard";
+import { SelectDemo } from "@/components/SelectDemo";
 import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Portfolio } from "@/hooks/types/portfolios";
@@ -50,7 +52,7 @@ export default async function Home() {
             >
               <Image
                 src={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolios[0].id}/${portfolios[0].thumbnail}`}
-                className="rounded-2xl"
+                className="rounded-2xl relative w-full"
                 alt={""}
                 width={1280}
                 height={720}
@@ -61,6 +63,16 @@ export default async function Home() {
           </div>
         </header>
       </main>
+      <div className="overflow-x-hidden transition-all duration-300 ease-smooth">
+        <div className="max-w-screen-xl mx-auto w-full px-4 my-5">
+          <div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
+            {portfolios.map((portfolio: Portfolio) => {
+              // eslint-disable-next-line react/jsx-key
+              return <PortfolioCard portfolio={portfolio} />;
+            })}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

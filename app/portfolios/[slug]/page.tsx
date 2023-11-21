@@ -3,17 +3,24 @@ import { Portfolio } from "@/hooks/types/portfolios";
 import { pb, sudo } from "@/lib/db/pocketbase";
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronLeft } from "lucide-react";
 export default async function Page({ params }: { params: { slug: string } }) {
   await sudo();
   const portfolio: Portfolio = await pb
     .collection("portfolios")
     .getOne(params.slug);
+
   return (
     <div className="relative min-h-screen">
       <div className="grid pb-48">
         <header className="py-4">
           <div className="max-w-lg mx-auto w-full px-4 flex justify-between">
-            <span className="opacity-40 my-auto">{portfolio.team_number}</span>
+            <span className="opacity-40 my-auto flex">
+              <a href="/" className="mx-4 my-auto">
+                <ChevronLeft className="h-4 w-4" />
+              </a>
+              {portfolio.team_number}
+            </span>
             <Link
               href={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolio.id}/${portfolio.file}`}
               target="_blank"
