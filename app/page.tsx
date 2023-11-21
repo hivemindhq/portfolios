@@ -1,3 +1,6 @@
+/* eslint-disable @next/next/no-async-client-component */
+"use client";
+
 import PortfolioCard from "@/components/PortfolioCard";
 import { SelectDemo } from "@/components/SelectDemo";
 import { Button } from "@/components/ui/button";
