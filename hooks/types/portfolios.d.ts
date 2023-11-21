@@ -9,4 +9,5 @@ export interface Portfolio {
   team_number: number;
   thumbnail: string;
   description: string;
+  key: number;
 }

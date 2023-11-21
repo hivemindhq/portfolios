@@ -70,9 +70,9 @@ export default async function Home() {
       <div className="overflow-x-hidden transition-all duration-300 ease-smooth">
         <div className="max-w-screen-xl mx-auto w-full px-4 my-5">
           <div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-            {portfolios.map((portfolio: Portfolio) => {
+            {portfolios.map((portfolio: Portfolio, key: number) => {
               // eslint-disable-next-line react/jsx-key
-              return <PortfolioCard portfolio={portfolio} />;
+              return <PortfolioCard portfolio={portfolio} key={key} />;
             })}
           </div>
         </div>
