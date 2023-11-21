@@ -44,7 +44,10 @@ export default async function Home() {
                 <Button variant={"outline"}>Open</Button>
               </Link>
             </div>
-            <a className="group relative block" href="">
+            <a
+              className="group relative block"
+              href={`/portfolios/${portfolios[0].id}`}
+            >
               <Image
                 src={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolios[0].id}/${portfolios[0].thumbnail}`}
                 className="rounded-2xl"

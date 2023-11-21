@@ -8,4 +8,5 @@ export interface Portfolio {
   team_name: string;
   team_number: number;
   thumbnail: string;
+  description: string;
 }
