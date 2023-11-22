@@ -52,7 +52,7 @@ body:
     validations:
       required: true
   - type: input
-    id: team-number
+    id: team-name
     attributes:
       label: 'Team Name'
       description: What is your team's name?
