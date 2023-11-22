@@ -6,7 +6,7 @@ licensed under [GNU LGPLv3](COPYING.LESSER).
 ## Features
 
 - **Easy-to-use interface**. Just one click away from the greatest portfolios
-- **Accessible**. Follows the WCAG Accessibility Standards 
+- **Accessible**. Follows the WCAG Accessibility Standards
 - **High performance**. Built for static, dynamic updates are supported.
 - **Free and open-source**. The code is free and open for anyone to audit and contribute to.
 
@@ -22,11 +22,13 @@ licensed under [GNU LGPLv3](COPYING.LESSER).
 Simply fork this repository and deploy to Vercel or your preffered hosting provider. A few great ones are listed below.
 
 **Hosting Solutions**:
-- **Vercel** is easy, free, and flexible. 
+
+- **Vercel** is easy, free, and flexible.
 - **Hop** is cheap, has a generous free tier, and provides great scalable infrastructure
 - **Railway** is kind of a mix between Vercel and Hop.
 
 **Database Solutions**:
+
 - **Pockethost** is a free hosting provider for Pocketbase
 - **Self-hosted Pocketbase** requires you to pay for a cloud service. You can run this on services like Hop, listed above!
 
@@ -42,6 +44,6 @@ Usually they will have an interface where you can paste your environment variabl
 
 Contributing is always welcome, wether you want to add a portfolio, or a feature to the web client, we will usually accept most pull-requests!
 
-----
+---
 
 Built with ❤️ by Hivemind Robotics

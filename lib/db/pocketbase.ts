@@ -1,39 +1,39 @@
-import Pocketbase, { ClientResponseError } from "pocketbase";
+import Pocketbase, {ClientResponseError} from 'pocketbase';
 
 export const pb = new Pocketbase(process.env.POCKETBASE_URL);
 
 export async function sudo() {
-  if (process.env.POCKETBASE_USERNAME && process.env.POCKETBASE_PASSWORD) {
-    await pb.admins.authWithPassword(
-      process.env.POCKETBASE_USERNAME,
-      process.env.POCKETBASE_PASSWORD
-    );
+	if (process.env.POCKETBASE_USERNAME && process.env.POCKETBASE_PASSWORD) {
+		await pb.admins.authWithPassword(
+			process.env.POCKETBASE_USERNAME,
+			process.env.POCKETBASE_PASSWORD,
+		);
 
-    pb.beforeSend = function (url, options) {
-      options.headers = Object.assign({}, options.headers, {
-        meta: process.env.META_URI,
-      });
+		pb.beforeSend = function (url, options) {
+			options.headers = Object.assign({}, options.headers, {
+				meta: process.env.META_URI,
+			});
 
-      return { url, options };
-    };
-  }
+			return {url, options};
+		};
+	}
 }
 
 export function parseError(e: ClientResponseError) {
-  const data = e.data;
-  if (!data) {
-    return e.message;
-  }
+	const data = e.data;
+	if (!data) {
+		return e.message;
+	}
 
-  const list = Object.keys(data);
+	const list = Object.keys(data);
 
-  if (list.length === 0) {
-    return e.message;
-  }
+	if (list.length === 0) {
+		return e.message;
+	}
 
-  return list
-    .map((key) => {
-      return `${key} > ${data[key].message}`;
-    })
-    .join("\n");
+	return list
+		.map(key => {
+			return `${key} > ${data[key].message}`;
+		})
+		.join('\n');
 }

@@ -1,36 +1,36 @@
-import { pb } from "@/lib/db/pocketbase";
+import {pb} from '@/lib/db/pocketbase';
 
 enum Field {
-  WORLDS,
-  REGIONALS,
-  QUALIFIER,
+	WORLDS,
+	REGIONALS,
+	QUALIFIER,
 }
 
 enum Award {
-  CONTROL,
-  INSPIRE,
-  MOTIVATE,
-  INNOVATE,
-  DESIGN,
-  CONNECT,
-  THINK,
+	CONTROL,
+	INSPIRE,
+	MOTIVATE,
+	INNOVATE,
+	DESIGN,
+	CONNECT,
+	THINK,
 }
 
 export function getPortfolioTypes(type: Field) {
-  let div;
+	let div;
 
-  switch (type) {
-    case Field.WORLDS: {
-      div = "worlds";
-      break;
-    }
-    case Field.QUALIFIER: {
-      div = "qualifier";
-      break;
-    }
-    case Field.REGIONALS: {
-      div = "regionals";
-      break;
-    }
-  }
+	switch (type) {
+		case Field.WORLDS: {
+			div = 'worlds';
+			break;
+		}
+		case Field.QUALIFIER: {
+			div = 'qualifier';
+			break;
+		}
+		case Field.REGIONALS: {
+			div = 'regionals';
+			break;
+		}
+	}
 }
