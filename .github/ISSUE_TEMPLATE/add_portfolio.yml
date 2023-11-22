@@ -52,29 +52,29 @@ body:
     validations:
       required: true
   - type: input
-      id: team-name
-      attributes:
-        label: Team Name
-        description: What is your team's name?
-        placeholder: Hivemind
-      validations:
-        required: true
+    id: team-number
+    attributes:
+      label: Team Name
+      description: What is your team's name?
+      placeholder: Hivemind
+    validations:
+      required: true
   - type: input
-      id: team-number
-      attributes:
-        label: Team Number
-        description: What is your team's number?
-        placeholder: 23396
-      validations:
-        required: true
+    id: team-number
+    attributes:
+      label: Team Number
+      description: What is your team's number?
+      placeholder: 23396
+    validations:
+      required: true
   - type: input
-      id: team-region
-      attributes:
-        label: Team Region
-        description: What is your team's number?
-        placeholder: Tennessee
-      validations:
-        required: true
+    id: team-region
+    attributes:
+      label: Team Region
+      description: What is your team's number?
+      placeholder: Tennessee
+    validations:
+      required: true
   - type: checkboxes
     id: terms
     attributes:
