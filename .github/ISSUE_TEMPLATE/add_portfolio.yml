@@ -64,7 +64,7 @@ body:
     attributes:
       label: 'Team Number'
       description: What is your team's number?
-      placeholder: 23396
+      placeholder: '23396'
     validations:
       required: true
   - type: input
