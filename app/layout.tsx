@@ -5,6 +5,7 @@ import {GeistSans} from 'geist/font/sans';
 import './globals.css';
 import {cn} from '@/lib/utils';
 import {Toaster} from 'sonner';
+import {GithubIcon} from 'lucide-react';
 
 export const metadata: Metadata = {
 	title: 'Portfolios',
@@ -26,10 +27,21 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 							</div>
 						</a>
 
-						<img
-							className="opacity-40"
-							src="https://hits-app.vercel.app/hits?url=https://portfolios.hivemindrobotics.net"
-						/>
+						<div className="flex">
+							<div className="ms-auto flex">
+								<img
+									className="opacity-40"
+									src="https://hits-app.vercel.app/hits?url=https://portfolios.hivemindrobotics.net"
+								/>
+								<a
+									className="opacity-40 transition hover:opacity-60"
+									href="https://github.com/hivemindhq/portfolios"
+									target="_blank"
+								>
+									<GithubIcon className="w-5 h-5" />
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</body>
