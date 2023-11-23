@@ -71,7 +71,7 @@ export default async function Home() {
 			</main>
 			<div className="overflow-x-hidden transition-all duration-300 ease-smooth">
 				<div className="max-w-screen-xl mx-auto w-full px-4 my-5">
-					<div className="w-full flex my-4">
+					<div className="w-full flex my-4 lg:hidden">
 						<ToggleGroup type="single" disabled variant={'outline'}>
 							<ToggleGroupItem value="inspire">Inspire</ToggleGroupItem>
 							<ToggleGroupItem value="control">Control</ToggleGroupItem>
