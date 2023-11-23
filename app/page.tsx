@@ -10,21 +10,16 @@ import Link from 'next/link';
 import {useEffect, useState} from 'react';
 import {toast} from 'sonner';
 import {cache} from 'react';
+import {ThemeProvider} from '@/components/ThemeProvider';
 
-export const getData = async () => {
-	const portfolios = await pb.collection('portfolios').getFullList({
+export default async function Home() {
+	const portfolios: Portfolio[] = await pb.collection('portfolios').getFullList({
 		sort: '@random',
 		fields: 'id, team_name, region, team_number, award_ranking, award, field, file, thumbnail',
 	});
 
-	return portfolios as unknown as Portfolio[];
-};
-
-export default async function Home() {
-	const portfolios: Portfolio[] = await getData();
-
 	return (
-		<>
+		<ThemeProvider>
 			<main className="justify-items-center overflow-x-hidden border-b light:border-black/5 dark:border-white/5 pb-8 md:py-8">
 				<header className="max-w-screen-xl mx-auto w-full px-4 grid items-end justify-items-center gap-4 md:grid-cols-2 md:justify-items-start">
 					<div className="grid max-w-lg content-start justify-items-center gap-3.5 py-16 md:max-w-md md:justify-items-start md:py-0">
@@ -90,16 +85,14 @@ export default async function Home() {
 						</ToggleGroup>
 					</div>
 					<div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-						{/* @ts-ignore */}
 						{portfolios.map((portfolio: Portfolio, key: number) => {
 							if (portfolio.award != null) {
-								// eslint-disable-next-line react/jsx-key
 								return <PortfolioCard portfolio={portfolio} key={key} />;
 							}
 						})}
 					</div>
 				</div>
 			</div>
-		</>
+		</ThemeProvider>
 	);
 }
