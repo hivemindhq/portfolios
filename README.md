@@ -24,8 +24,8 @@ Simply fork this repository and deploy to Vercel or your preffered hosting provi
 **Hosting Solutions**:
 
 - **Vercel** is easy, free, and flexible.
-- **Hop** is cheap, has a generous free tier, and provides great scalable infrastructure
-- **Railway** is kind of a mix between Vercel and Hop.
+- **Hop** is cheap, has a generous free tier, and provides great scalable infrastructure.
+- **Railway** is cheap, scalable, and has a great community.
 
 **Database Solutions**:
 
