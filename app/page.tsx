@@ -94,7 +94,7 @@ export default function Home() {
 			<div className="overflow-x-hidden transition-all duration-300 ease-smooth">
 				<div className="max-w-screen-xl mx-auto w-full px-4 my-5">
 					<div className="w-full my-4 hidden md:flex lg:flex">
-						<ToggleGroup type="single" disabled variant={'outline'}>
+						<ToggleGroup disabled type="multiple" variant={'outline'}>
 							<ToggleGroupItem value="inspire">Inspire</ToggleGroupItem>
 							<ToggleGroupItem value="control">Control</ToggleGroupItem>
 							<ToggleGroupItem value="motivate">Motivate</ToggleGroupItem>
