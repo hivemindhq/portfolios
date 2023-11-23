@@ -3,10 +3,14 @@
 
 import PortfolioCard from '@/components/PortfolioCard';
 import {Button} from '@/components/ui/button';
+import {ToggleGroup, ToggleGroupItem} from '@/components/ui/toggle-group';
 import {Portfolio} from '@/hooks/types/portfolios';
 import {pb, sudo} from '@/lib/db/pocketbase';
+import {Select, SelectItem, Tab, Tabs} from '@nextui-org/react';
+import {Star} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import {toast} from 'sonner';
 
 export default async function Home() {
 	await sudo();
@@ -26,11 +30,20 @@ export default async function Home() {
 						<p className="text-2xl font-medium tracking-tight md:text-left text-center">
 							Award-winning FIRST Tech Challenge Portfolios
 						</p>
-						{/* <a onClick={() => toast("This feature is coming soon!")}>
-              <Button asChild variant={"outline"}>
-                Submit yours
-              </Button>
-            </a> */}
+						<div className="flex space-x-4">
+							<a href="https://github.com/hivemindhq/portfolios" target="_blank">
+								<Button>
+									<Star className="w-4 h-4 me-2" />
+									Star the repository
+								</Button>
+							</a>
+							<a
+								href="https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=addition&projects=&template=add_portfolio.yml&title=Portfolios+%C2%BB+"
+								target="_blank"
+							>
+								<Button variant={'outline'}>Add yours in 5 minutes.</Button>
+							</a>
+						</div>
 					</div>
 					<div className="grid w-full gap-2">
 						<div className="flex items-center justify-between">
@@ -58,10 +71,25 @@ export default async function Home() {
 			</main>
 			<div className="overflow-x-hidden transition-all duration-300 ease-smooth">
 				<div className="max-w-screen-xl mx-auto w-full px-4 my-5">
+					<div className="w-full flex my-4">
+						<ToggleGroup type="single" disabled variant={'outline'}>
+							<ToggleGroupItem value="inspire">Inspire</ToggleGroupItem>
+							<ToggleGroupItem value="control">Control</ToggleGroupItem>
+							<ToggleGroupItem value="motivate">Motivate</ToggleGroupItem>
+							<ToggleGroupItem value="innovate">Innovate</ToggleGroupItem>
+							<ToggleGroupItem value="design">Design</ToggleGroupItem>
+							<ToggleGroupItem value="think">Think</ToggleGroupItem>
+							<ToggleGroupItem value="worlds">Worlds</ToggleGroupItem>
+							<ToggleGroupItem value="regional">Regional</ToggleGroupItem>
+							<ToggleGroupItem value="qualifier">Qualifier</ToggleGroupItem>
+						</ToggleGroup>
+					</div>
 					<div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
 						{portfolios.map((portfolio: Portfolio, key: number) => {
-							// eslint-disable-next-line react/jsx-key
-							return <PortfolioCard portfolio={portfolio} key={key} />;
+							if (portfolio.award != null) {
+								// eslint-disable-next-line react/jsx-key
+								return <PortfolioCard portfolio={portfolio} key={key} />;
+							}
 						})}
 					</div>
 				</div>
