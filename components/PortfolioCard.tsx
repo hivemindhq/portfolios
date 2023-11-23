@@ -27,7 +27,7 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 					<Image
 						src={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolio.id}/${portfolio.thumbnail}`}
 						className="rounded-2xl relative w-full"
-						alt={''}
+						alt={`FTC ${portfolio.team_number} ${portfolio.team_name}'s Thumbnail`}
 						width={1280}
 						height={720}
 						aria-hidden

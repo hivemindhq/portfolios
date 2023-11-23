@@ -36,6 +36,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 									className="opacity-40"
 									src="https://hits-app.vercel.app/hits?url=https://portfolios.hivemindrobotics.net"
 									alt="Counter"
+									height={20}
 								/>
 								<Link
 									className="opacity-40 transition hover:opacity-60"
