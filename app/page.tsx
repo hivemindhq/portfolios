@@ -13,7 +13,7 @@ import Link from 'next/link';
 import {toast} from 'sonner';
 
 export default async function Home() {
-	await sudo();
+	sudo();
 	const portfolios: Portfolio[] = await pb.collection('portfolios').getFullList({
 		sort: '@random',
 		fields: 'id, team_name, region, team_number, award_ranking, award, field, file, thumbnail',
