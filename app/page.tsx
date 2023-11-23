@@ -1,6 +1,3 @@
-/* eslint-disable @next/next/no-async-client-component */
-'use client';
-
 import PortfolioCard from '@/components/PortfolioCard';
 import {Button} from '@/components/ui/button';
 import {ToggleGroup, ToggleGroupItem} from '@/components/ui/toggle-group';
@@ -10,13 +7,21 @@ import {Select, SelectItem, Tab, Tabs} from '@nextui-org/react';
 import {Star} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import {useEffect, useState} from 'react';
 import {toast} from 'sonner';
+import {cache} from 'react';
 
-export default async function Home() {
-	const portfolios: Portfolio[] = await pb.collection('portfolios').getFullList({
+export const getData = async () => {
+	const portfolios = await pb.collection('portfolios').getFullList({
 		sort: '@random',
 		fields: 'id, team_name, region, team_number, award_ranking, award, field, file, thumbnail',
 	});
+
+	return portfolios as unknown as Portfolio[];
+};
+
+export default async function Home() {
+	const portfolios: Portfolio[] = await getData();
 
 	return (
 		<>
@@ -85,6 +90,7 @@ export default async function Home() {
 						</ToggleGroup>
 					</div>
 					<div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
+						{/* @ts-ignore */}
 						{portfolios.map((portfolio: Portfolio, key: number) => {
 							if (portfolio.award != null) {
 								// eslint-disable-next-line react/jsx-key

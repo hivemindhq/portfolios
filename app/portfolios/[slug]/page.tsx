@@ -1,13 +1,20 @@
-'use client';
-
 import {Button} from '@/components/ui/button';
 import {Portfolio} from '@/hooks/types/portfolios';
 import {pb, sudo} from '@/lib/db/pocketbase';
 import Link from 'next/link';
 import Image from 'next/image';
 import {ChevronLeft} from 'lucide-react';
-export default async function Page({params}: {params: {slug: string}}) {
-	const portfolio: Portfolio = await pb.collection('portfolios').getOne(params.slug);
+import {cache} from 'react';
+
+export const revalidate = 3600;
+
+export const getPortfolio = async (slug: string) => {
+	const portfolio = await pb.collection('portfolios').getOne(slug);
+	return portfolio as unknown as Portfolio;
+};
+
+export default async function Page({params: {slug}}: {params: {slug: string}}) {
+	const portfolio: Portfolio = await getPortfolio(slug);
 
 	return (
 		<div className="relative min-h-screen">
