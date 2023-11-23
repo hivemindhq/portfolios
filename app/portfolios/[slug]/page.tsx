@@ -1,3 +1,5 @@
+'use client';
+
 import {Button} from '@/components/ui/button';
 import {Portfolio} from '@/hooks/types/portfolios';
 import {pb, sudo} from '@/lib/db/pocketbase';
