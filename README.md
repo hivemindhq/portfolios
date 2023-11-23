@@ -32,7 +32,7 @@ Simply fork this repository and deploy to Vercel or your preffered hosting provi
 **Database Solutions**:
 
 - **Pockethost** is a free hosting provider for Pocketbase
-- **Self-hosted Pocketbase** requires you to pay for a cloud service. You can run this on services like Hop or Railway, listed above!
+- **Self-hosted Pocketbase** requires you to pay for a cloud service. You can run this on services like Hop, Railway, or Fly, listed above!
 
 **Setting up Environment Variables**
 
