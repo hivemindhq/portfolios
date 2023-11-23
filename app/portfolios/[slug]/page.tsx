@@ -49,7 +49,7 @@ export default async function Page({params}: {params: {slug: string}}) {
 								{portfolio.award} {portfolio.award_ranking} at {portfolio.field}
 							</span>
 						</div>
-						<h1 className="overflow-auto bg-gradient-to-r from-neutral-500 to-black bg-clip-text text-4xl font-bold leading-tight tracking-tight text-transparent">
+						<h1 className="overflow-auto bg-gradient-to-r from-neutral-500 to-white  bg-clip-text text-4xl font-bold leading-tight tracking-tight text-transparent">
 							{portfolio.team_name}
 						</h1>
 						<p className="max-w-xs">{portfolio.description}</p>
