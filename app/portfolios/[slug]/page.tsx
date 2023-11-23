@@ -7,7 +7,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {ChevronLeft} from 'lucide-react';
 export default async function Page({params}: {params: {slug: string}}) {
-	await sudo();
 	const portfolio: Portfolio = await pb.collection('portfolios').getOne(params.slug);
 
 	return (
