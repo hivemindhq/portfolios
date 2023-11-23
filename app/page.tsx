@@ -52,19 +52,19 @@ export default function Home() {
 							Award-winning FIRST Tech Challenge Portfolios
 						</p>
 						<div className="flex space-x-4">
-							<a href="https://github.com/hivemindhq/portfolios" target="_blank">
+							<Link href="https://github.com/hivemindhq/portfolios" target="_blank">
 								<Button>
 									<Star className="w-4 h-4 me-2" />
 									Star the repository
 								</Button>
-							</a>
-							<a
+							</Link>
+							<Link
 								href="https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=addition&projects=&template=add_portfolio.yml&title=Portfolios+%C2%BB+"
 								target="_blank"
 								className="hidden md:flex lg:flex"
 							>
 								<Button variant={'outline'}>Add yours in 5 minutes.</Button>
-							</a>
+							</Link>
 						</div>
 					</div>
 					<div className="grid w-full gap-2">
@@ -77,7 +77,7 @@ export default function Home() {
 								<Button variant={'outline'}>Open</Button>
 							</Link>
 						</div>
-						<a className="group relative block" href={`/portfolios/${portfolios[0].id}`}>
+						<Link className="group relative block" href={`/portfolios/${portfolios[0].id}`}>
 							<Image
 								src={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolios[0].id}/${portfolios[0].thumbnail}`}
 								className="rounded-2xl relative w-full"
@@ -85,8 +85,8 @@ export default function Home() {
 								width={1280}
 								height={720}
 							/>
-							<div className="ease  rounded-2xl pointer-events-none absolute inset-0 border border-black/5 transition duration-150 group-hover:bg-black/20"></div>
-						</a>
+							<div className="ease rounded-2xl pointer-events-none absolute inset-0 border border-black/5 transition duration-150 group-hover:bg-black/20"></div>
+						</Link>
 						<h1 className="truncate font-medium">{portfolios[0].team_name}</h1>
 					</div>
 				</header>

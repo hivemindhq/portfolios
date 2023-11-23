@@ -39,9 +39,9 @@ export default function Page({params: {slug}}: {params: {slug: string}}) {
 					<header className="py-4">
 						<div className="max-w-lg mx-auto w-full px-4 flex justify-between">
 							<span className="opacity-40 my-auto flex">
-								<a href="/" className="mx-4 my-auto">
+								<Link href="/" className="mx-4 my-auto">
 									<ChevronLeft className="h-4 w-4" />
-								</a>
+								</Link>
 								{portfolio.team_number}
 							</span>
 							<Link
