@@ -18,11 +18,15 @@ import {ModeToggle} from '@/components/ModeSelector';
 export default function Home() {
 	const [portfolios, setPortfolios] = useState<Portfolio[]>();
 
+	const [field, setField] = useState<string>('');
+	const [award, setAward] = useState<string>('');
+
 	useEffect(() => {
 		pb.collection('portfolios')
 			.getFullList({
 				sort: '@random',
 				fields: 'id, team_name, region, team_number, award_ranking, award, field, file, thumbnail',
+				expand: 'award, field',
 			})
 			.then(data => {
 				setPortfolios(data as unknown as Portfolio[]);
@@ -98,13 +102,20 @@ export default function Home() {
 			<div className="overflow-x-hidden transition-all duration-300 ease-smooth">
 				<div className="max-w-screen-xl mx-auto w-full px-4 my-5">
 					<div className="w-full my-4 hidden md:flex lg:flex space-x-4">
-						<ToggleGroup disabled type="multiple" variant={'outline'}>
+						<ToggleGroup disabled type="single" variant={'outline'}>
 							<ToggleGroupItem value="inspire">Inspire</ToggleGroupItem>
 							<ToggleGroupItem value="control">Control</ToggleGroupItem>
 							<ToggleGroupItem value="motivate">Motivate</ToggleGroupItem>
 							<ToggleGroupItem value="innovate">Innovate</ToggleGroupItem>
 							<ToggleGroupItem value="design">Design</ToggleGroupItem>
 							<ToggleGroupItem value="think">Think</ToggleGroupItem>
+						</ToggleGroup>
+						<ToggleGroup
+							disabled
+							onClick={e => setField('Worlds')}
+							type="single"
+							variant={'outline'}
+						>
 							<ToggleGroupItem value="worlds">Worlds</ToggleGroupItem>
 							<ToggleGroupItem value="regional">Regional</ToggleGroupItem>
 							<ToggleGroupItem value="qualifier">Qualifier</ToggleGroupItem>
@@ -115,8 +126,18 @@ export default function Home() {
 					</div>
 					<div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
 						{portfolios.map((portfolio: Portfolio, key: number) => {
-							if (portfolio.award != null) {
-								return <PortfolioCard portfolio={portfolio} key={key} />;
+							if (award === '' || field === '') {
+								return <PortfolioCard portfolio={portfolio} key={key}></PortfolioCard>;
+							} else if (award || field) {
+								if (portfolio.award[0] == award || field === field) {
+									return <PortfolioCard portfolio={portfolio} key={key}></PortfolioCard>;
+								} else {
+									return;
+								}
+							} else if (field === '' || award) {
+								if (portfolio.award[0] === award) {
+									return <PortfolioCard portfolio={portfolio} key={key}></PortfolioCard>;
+								}
 							}
 						})}
 					</div>
