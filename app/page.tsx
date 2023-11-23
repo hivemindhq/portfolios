@@ -24,7 +24,7 @@ export default async function Home() {
 			<main className="justify-items-center overflow-x-hidden border-b border-black/5 pb-8 md:py-8">
 				<header className="max-w-screen-xl mx-auto w-full px-4 grid items-end justify-items-center gap-4 md:grid-cols-2 md:justify-items-start">
 					<div className="grid max-w-lg content-start justify-items-center gap-3.5 py-16 md:max-w-md md:justify-items-start md:py-0">
-						<h1 className="overflow-auto bg-gradient-to-r from-neutral-500 to-black bg-clip-text text-5xl font-bold leading-tight tracking-tight text-transparent">
+						<h1 className="overflow-auto bg-gradient-to-r light:from-neutral-500 light:to-black dark:from-neutral-500 dark:to-white bg-clip-text text-5xl font-bold leading-tight tracking-tight text-transparent">
 							Portfolios
 						</h1>
 						<p className="text-2xl font-medium tracking-tight md:text-left text-center">
