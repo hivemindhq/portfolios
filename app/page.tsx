@@ -13,6 +13,7 @@ import {useEffect, useState} from 'react';
 import {toast} from 'sonner';
 import {cache} from 'react';
 import {ThemeProvider} from '@/components/ThemeProvider';
+import {ModeToggle} from '@/components/ModeSelector';
 
 export default function Home() {
 	const [portfolios, setPortfolios] = useState<Portfolio[]>();
@@ -41,11 +42,14 @@ export default function Home() {
 	}
 
 	return (
-		<ThemeProvider>
+		<>
 			<main className="justify-items-center overflow-x-hidden border-b light:border-black/5 dark:border-white/5 pb-8 md:py-8">
 				<header className="max-w-screen-xl mx-auto w-full px-4 grid items-end justify-items-center gap-4 md:grid-cols-2 md:justify-items-start">
 					<div className="grid max-w-lg content-start justify-items-center gap-3.5 py-16 md:max-w-md md:justify-items-start md:py-0">
-						<h1 className="overflow-auto bg-gradient-to-r from-neutral-500 to-white bg-clip-text text-5xl font-bold leading-tight tracking-tight text-transparent">
+						<h1 className="overflow-auto bg-gradient-to-r from-neutral-500 dark:hidden to-black bg-clip-text text-5xl font-bold leading-tight tracking-tight text-transparent">
+							Portfolios
+						</h1>
+						<h1 className="overflow-auto bg-gradient-to-r from-neutral-500 hidden dark:flex to-white bg-clip-text text-5xl font-bold leading-tight tracking-tight text-transparent">
 							Portfolios
 						</h1>
 						<p className="text-2xl font-medium tracking-tight md:text-left text-center">
@@ -93,7 +97,7 @@ export default function Home() {
 			</main>
 			<div className="overflow-x-hidden transition-all duration-300 ease-smooth">
 				<div className="max-w-screen-xl mx-auto w-full px-4 my-5">
-					<div className="w-full my-4 hidden md:flex lg:flex">
+					<div className="w-full my-4 hidden md:flex lg:flex space-x-4">
 						<ToggleGroup disabled type="multiple" variant={'outline'}>
 							<ToggleGroupItem value="inspire">Inspire</ToggleGroupItem>
 							<ToggleGroupItem value="control">Control</ToggleGroupItem>
@@ -105,6 +109,9 @@ export default function Home() {
 							<ToggleGroupItem value="regional">Regional</ToggleGroupItem>
 							<ToggleGroupItem value="qualifier">Qualifier</ToggleGroupItem>
 						</ToggleGroup>
+						<div className="justify-end">
+							<ModeToggle />
+						</div>
 					</div>
 					<div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
 						{portfolios.map((portfolio: Portfolio, key: number) => {
@@ -115,6 +122,6 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
-		</ThemeProvider>
+		</>
 	);
 }
