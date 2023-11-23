@@ -24,13 +24,15 @@ Simply fork this repository and deploy to Vercel or your preffered hosting provi
 **Hosting Solutions**:
 
 - **Vercel** is easy, free, and flexible.
-- **Hop** is cheap, has a generous free tier, and provides great scalable infrastructure
-- **Railway** is kind of a mix between Vercel and Hop.
+- **Netlify** is basically the same as Vercel.
+- **Hop** is cheap, has a generous free tier, and provides great scalable infrastructure.
+- **Railway** is cheap, scalable, and has a great community.
+- **Fly.io** is fast and ridiculously flexible.
 
 **Database Solutions**:
 
 - **Pockethost** is a free hosting provider for Pocketbase
-- **Self-hosted Pocketbase** requires you to pay for a cloud service. You can run this on services like Hop, listed above!
+- **Self-hosted Pocketbase** requires you to pay for a cloud service. You can run this on services like Hop, Railway, or Fly, listed above!
 
 **Setting up Environment Variables**
 
