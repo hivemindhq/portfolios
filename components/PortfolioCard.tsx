@@ -19,13 +19,18 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 						<Button variant={'outline'}>Open</Button>
 					</Link>
 				</div>
-				<Link className="group relative block" href={`/portfolios/${portfolio.id}`}>
+				<Link
+					className="group relative block"
+					href={`/portfolios/${portfolio.id}`}
+					aria-label={`FTC ${portfolio.team_number} ${portfolio.team_name}'s Portfolio`}
+				>
 					<Image
 						src={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolio.id}/${portfolio.thumbnail}`}
 						className="rounded-2xl relative w-full"
 						alt={''}
 						width={1280}
 						height={720}
+						aria-hidden
 					/>
 					<div className="ease rounded-2xl pointer-events-none absolute inset-0 border border-black/5 transition duration-150 group-hover:bg-black/20"></div>
 				</Link>
