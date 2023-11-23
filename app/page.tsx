@@ -40,6 +40,7 @@ export default async function Home() {
 							<a
 								href="https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=addition&projects=&template=add_portfolio.yml&title=Portfolios+%C2%BB+"
 								target="_blank"
+								className="lg:hidden"
 							>
 								<Button variant={'outline'}>Add yours in 5 minutes.</Button>
 							</a>
