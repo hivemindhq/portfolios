@@ -18,39 +18,41 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
-		<html lang="en">
-			<body className={cn('dark min-h-screen bg-background antialiased', GeistSans.className)}>
-				<Toaster richColors />
-				{children}
-				<div className="max-w-screen-xl mx-auto w-full px-4 my-5">
-					<div className="flex items-center justify-between">
-						<Link href="https://hivemindrobotics.net/" target="_blank">
-							<div className="opacity-40 underline hover:opacity-60 transition">
-								&copy; 2023, hivemind
-							</div>
-						</Link>
+		<html lang="en" suppressHydrationWarning>
+			<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+				<body className={cn('min-h-screen bg-background antialiased', GeistSans.className)}>
+					<Toaster richColors />
+					{children}
+					<div className="max-w-screen-xl mx-auto w-full px-4 my-5">
+						<div className="flex items-center justify-between">
+							<Link href="https://hivemindrobotics.net/" target="_blank">
+								<div className="opacity-40 underline hover:opacity-60 transition">
+									&copy; 2023, hivemind
+								</div>
+							</Link>
 
-						<div className="flex">
-							<div className="ms-auto flex">
-								<img
-									className="opacity-40"
-									src="https://hits-app.vercel.app/hits?url=https://portfolios.hivemindrobotics.net"
-									alt="Counter"
-									height={20}
-								/>
-								<Link
-									className="opacity-40 transition hover:opacity-60"
-									href="https://github.com/hivemindhq/portfolios"
-									target="_blank"
-									aria-label="Github"
-								>
-									<GithubIcon className="w-5 h-5" />
-								</Link>
+							<div className="flex">
+								<div className="ms-auto flex">
+									<img
+										className="opacity-40"
+										src="https://hits-app.vercel.app/hits?url=https://portfolios.hivemindrobotics.net"
+										alt="Counter"
+										height={20}
+									/>
+									<Link
+										className="opacity-40 transition hover:opacity-60"
+										href="https://github.com/hivemindhq/portfolios"
+										target="_blank"
+										aria-label="Github"
+									>
+										<GithubIcon className="w-5 h-5" />
+									</Link>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</body>
+				</body>
+			</ThemeProvider>
 		</html>
 	);
 }

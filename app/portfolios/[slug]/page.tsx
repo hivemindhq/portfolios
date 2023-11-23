@@ -22,18 +22,18 @@ export default function Page({params: {slug}}: {params: {slug: string}}) {
 
 	if (!portfolio) {
 		return (
-			<ThemeProvider>
+			<>
 				<div className="flex w-[100vw] h-[100vh]">
 					<div className="m-auto">
 						<Loader2 className="mr-2 h-[30px] w-[30px] animate-spin" />
 					</div>
 				</div>
-			</ThemeProvider>
+			</>
 		);
 	}
 
 	return (
-		<ThemeProvider>
+		<>
 			<div className="relative min-h-screen">
 				<div className="grid pb-48">
 					<header className="py-4">
@@ -100,6 +100,6 @@ export default function Page({params: {slug}}: {params: {slug: string}}) {
 					</div>
 				</div>
 			</div>
-		</ThemeProvider>
+		</>
 	);
 }
