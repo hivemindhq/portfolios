@@ -18,13 +18,10 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
 	const date = new Date().getFullYear();
 	return (
-		<html lang="en">
-			<ThemeProvider>
+		<ThemeProvider>
+			<html lang="en">
 				<body className={cn('min-h-screen bg-background antialiased', GeistSans.className)}>
 					<Toaster richColors />
-					{/* <div className="sticky bottom-0 left-0">
-						<ModeToggle />
-					</div> */}
 					{children}
 					<div className="max-w-screen-xl mx-auto w-full px-4 my-5">
 						<div className="flex items-center justify-between">
@@ -52,7 +49,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 						</div>
 					</div>
 				</body>
-			</ThemeProvider>
-		</html>
+			</html>
+		</ThemeProvider>
 	);
 }

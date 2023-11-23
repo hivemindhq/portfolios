@@ -36,7 +36,7 @@
 	}
 
 	.dark {
-		--background: 222.2 84% 4.9%;
+		--background: 0 0% 0%;
 		--foreground: 210 40% 98%;
 
 		--card: 222.2 84% 4.9%;
@@ -72,5 +72,27 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	@layer base {
+		* {
+			@apply border-border;
+		}
+		body {
+			@apply dark bg-background text-foreground;
+		}
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	@layer base {
+		* {
+			@apply border-border;
+		}
+		body {
+			@apply bg-background text-foreground;
+		}
 	}
 }
