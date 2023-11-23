@@ -1,6 +1,8 @@
 import Pocketbase, {ClientResponseError} from 'pocketbase';
 
-export const pb = new Pocketbase(process.env.POCKETBASE_URL);
+export const url = 'https://portfolioutility.pockethost.io/';
+
+export const pb = new Pocketbase(url);
 
 export async function sudo() {
 	if (process.env.POCKETBASE_USERNAME && process.env.POCKETBASE_PASSWORD) {

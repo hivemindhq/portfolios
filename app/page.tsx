@@ -1,10 +1,12 @@
+'use client';
+
 import PortfolioCard from '@/components/PortfolioCard';
 import {Button} from '@/components/ui/button';
 import {ToggleGroup, ToggleGroupItem} from '@/components/ui/toggle-group';
 import {Portfolio} from '@/hooks/types/portfolios';
 import {pb, sudo} from '@/lib/db/pocketbase';
 import {Select, SelectItem, Tab, Tabs} from '@nextui-org/react';
-import {Star} from 'lucide-react';
+import {Loader2, Star} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useEffect, useState} from 'react';
@@ -12,11 +14,31 @@ import {toast} from 'sonner';
 import {cache} from 'react';
 import {ThemeProvider} from '@/components/ThemeProvider';
 
-export default async function Home() {
-	const portfolios: Portfolio[] = await pb.collection('portfolios').getFullList({
-		sort: '@random',
-		fields: 'id, team_name, region, team_number, award_ranking, award, field, file, thumbnail',
-	});
+export default function Home() {
+	const [portfolios, setPortfolios] = useState<Portfolio[]>();
+
+	useEffect(() => {
+		pb.collection('portfolios')
+			.getFullList({
+				sort: '@random',
+				fields: 'id, team_name, region, team_number, award_ranking, award, field, file, thumbnail',
+			})
+			.then(data => {
+				setPortfolios(data as unknown as Portfolio[]);
+			});
+	}, []);
+
+	if (!portfolios) {
+		return (
+			<ThemeProvider>
+				<div className="flex w-[100vw] h-[100vh]">
+					<div className="m-auto">
+						<Loader2 className="mr-2 h-[30px] w-[30px] animate-spin" />
+					</div>
+				</div>
+			</ThemeProvider>
+		);
+	}
 
 	return (
 		<ThemeProvider>

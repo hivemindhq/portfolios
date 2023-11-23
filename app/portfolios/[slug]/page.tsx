@@ -1,14 +1,36 @@
+'use client';
+
 import {Button} from '@/components/ui/button';
 import {Portfolio} from '@/hooks/types/portfolios';
 import {pb, sudo} from '@/lib/db/pocketbase';
 import Link from 'next/link';
 import Image from 'next/image';
-import {ChevronLeft} from 'lucide-react';
-import {cache} from 'react';
+import {ChevronLeft, Loader2} from 'lucide-react';
+import {cache, useEffect, useState} from 'react';
 import {ThemeProvider} from '@/components/ThemeProvider';
 
-export default async function Page({params: {slug}}: {params: {slug: string}}) {
-	const portfolio: Portfolio = await pb.collection('portfolios').getOne(slug);
+export default function Page({params: {slug}}: {params: {slug: string}}) {
+	const [portfolio, setPortfolio] = useState<Portfolio>();
+
+	useEffect(() => {
+		pb.collection('portfolios')
+			.getOne(slug)
+			.then(data => {
+				setPortfolio(data as unknown as Portfolio);
+			});
+	}, []);
+
+	if (!portfolio) {
+		return (
+			<ThemeProvider>
+				<div className="flex w-[100vw] h-[100vh]">
+					<div className="m-auto">
+						<Loader2 className="mr-2 h-[30px] w-[30px] animate-spin" />
+					</div>
+				</div>
+			</ThemeProvider>
+		);
+	}
 
 	return (
 		<ThemeProvider>
