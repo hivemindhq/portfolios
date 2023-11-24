@@ -12,10 +12,10 @@ licensed under [GNU LGPLv3](COPYING.LESSER).
 
 **Stack:**
 
-- **Pocketbase** for easy database support, allowing anyone to easily set up a deployment!
-- **Next.js**, a high-preformance scalable solution for static sites.
-- **TailwindCSS** for easy style editing.
-- **RadixUI** for accessible components
+- [**Pocketbase**](https://pocketbase.io/) for easy database support, allowing anyone to easily set up a deployment!
+- [**Next.js**](https://nextjs.org/), a high-preformance scalable solution for static sites.
+- [**TailwindCSS**](https://tailwindcss.com/) for easy style editing.
+- [**RadixUI**](https://www.radix-ui.com/) for accessible components
 
 ## Getting started
 
@@ -23,15 +23,15 @@ Simply fork this repository and deploy to Vercel or your preffered hosting provi
 
 **Hosting Solutions**:
 
-- **Vercel** is easy, free, and flexible.
+- [**Vercel**](https://vercel.app/) is easy, free, and flexible.
 - [**Netlify**](https://netlify.com/) is basically the same as Vercel.
-- **Hop** is cheap, has a generous free tier, and provides great scalable infrastructure.
-- **Railway** is cheap, scalable, and has a great community.
-- **Fly.io** is fast and ridiculously flexible.
+- [**Hop**](https://hop.io/) is cheap, has a generous free tier, and provides great scalable infrastructure.
+- [**Railway**](https://railway.app/) is cheap, scalable, and has a great community.
+- [**Fly.io**](https://fly.io/) is fast and ridiculously flexible.
 
 **Database Solutions**:
 
-- **Pockethost** is a free hosting provider for Pocketbase
+- [**Pockethost**](https://pockethost.io/) is a free hosting provider for Pocketbase
 - **Self-hosted Pocketbase** requires you to pay for a cloud service. You can run this on services like Hop, Railway, or Fly, listed above!
 
 **Setting up Environment Variables**
