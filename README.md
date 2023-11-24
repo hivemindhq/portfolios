@@ -24,7 +24,7 @@ Simply fork this repository and deploy to Vercel or your preffered hosting provi
 **Hosting Solutions**:
 
 - **Vercel** is easy, free, and flexible.
-- **Netlify** is basically the same as Vercel.
+- [**Netlify**](https://netlify.com/) is basically the same as Vercel.
 - **Hop** is cheap, has a generous free tier, and provides great scalable infrastructure.
 - **Railway** is cheap, scalable, and has a great community.
 - **Fly.io** is fast and ridiculously flexible.
