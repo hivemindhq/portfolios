@@ -38,7 +38,7 @@ Simply fork this repository and deploy to Vercel or your preffered hosting provi
 
 Once you have your host setup, you'll notice the frontend cannot deploy without some basic environment variables. You'll need to configure these environment variables inside your web-hosting provider.
 
-Usually they will have an interface where you can paste your environment variables. See `env.example` to see the schema for your environment variables.
+Usually they will have an interface where you can paste your environment variables. See [`env.example`](portfolios.env.example) to see the schema for your environment variables.
 
 > Please note, you will need to include all environment variables for this site to function properly.
 
