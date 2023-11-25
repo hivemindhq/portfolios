@@ -32,9 +32,9 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 						height={720}
 						aria-hidden
 					/>
-					<div className="relative top-[-200px] right-[-356px] opacity-0 group-hover:opacity-100">
+					<div className="relative top-[-200px] right-[-356px] opacity-0 group-hover:opacity-100 transition duration-150">
 						<Link href="https://github.com/hivemindhq/portfolios/issues/new/choose">
-							<FlagIcon className="w-5 h-5 text-red-500 opacity-40 hover:opacity-100" />
+							<FlagIcon className="w-5 h-5 text-red-500 opacity-40 hover:opacity-100 transition duration-150" />
 						</Link>
 					</div>
 					<div className="ease rounded-2xl pointer-events-none absolute inset-0 border border-black/5 transition duration-150 group-hover:bg-black/20"></div>

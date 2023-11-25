@@ -8,7 +8,7 @@ body:
       value: |
         Please make sure to include all the required fields to get your portfolio removed.
   - type: input
-    id: team-name
+    id: team_name
     attributes:
       label: 'Team Name'
       description: What is your team's name?
@@ -16,7 +16,7 @@ body:
     validations:
       required: true
   - type: input
-    id: team-number
+    id: team_number
     attributes:
       label: 'Team Number'
       description: What is your team's number?
@@ -24,7 +24,7 @@ body:
     validations:
       required: true
   - type: input
-    id: team-region
+    id: team_region
     attributes:
       label: 'Team Region'
       description: What is your team's number?

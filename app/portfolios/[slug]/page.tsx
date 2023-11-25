@@ -5,7 +5,7 @@ import {Portfolio} from '@/hooks/types/portfolios';
 import {pb, sudo} from '@/lib/db/pocketbase';
 import Link from 'next/link';
 import Image from 'next/image';
-import {ChevronLeft, Loader2} from 'lucide-react';
+import {ChevronLeft, FlagIcon, Loader2} from 'lucide-react';
 import {cache, useEffect, useState} from 'react';
 import {ThemeProvider} from '@/components/ThemeProvider';
 
@@ -99,6 +99,15 @@ export default function Page({params: {slug}}: {params: {slug: string}}) {
 									<li>Ranked {portfolio.award_ranking}</li>
 								</ul>
 							</div>
+						</div>
+						<div className="my-6">
+							<Link
+								href={`https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=modification&projects=&template=remove_portfolio.yml&title=Portfolio+Removal%2FModification+%C2%BB+${portfolio.team_name}&team_name=${portfolio.team_name}&team_number=${portfolio.team_number}`}
+							>
+								<Button variant={'secondary'}>
+									<FlagIcon className="mr-2 h-4 w-4" /> Submit Removal or Modification Request
+								</Button>
+							</Link>
 						</div>
 					</div>
 				</div>
