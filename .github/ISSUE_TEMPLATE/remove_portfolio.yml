@@ -27,7 +27,7 @@ body:
     id: team_region
     attributes:
       label: 'Team Region'
-      description: What is your team's number?
+      description: What is your team's region?
       placeholder: Tennessee
     validations:
       required: true

@@ -2,12 +2,11 @@
 
 import {Button} from '@/components/ui/button';
 import {Portfolio} from '@/hooks/types/portfolios';
-import {pb, sudo} from '@/lib/db/pocketbase';
+import {pb} from '@/lib/db/pocketbase';
 import Link from 'next/link';
 import Image from 'next/image';
 import {ChevronLeft, FlagIcon, Loader2} from 'lucide-react';
-import {cache, useEffect, useState} from 'react';
-import {ThemeProvider} from '@/components/ThemeProvider';
+import {useEffect, useState} from 'react';
 
 export default function Page({params: {slug}}: {params: {slug: string}}) {
 	const [portfolio, setPortfolio] = useState<Portfolio>();
