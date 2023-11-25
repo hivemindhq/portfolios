@@ -18,7 +18,7 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 							target="_blank"
 							className="my-auto"
 						>
-							<FlagIcon className="w-5 h-5 text-red-500 opacity-20 hover:opacity-100 transition duration-150" />
+							<FlagIcon className="w-5 h-5 text-red-500 opacity-40 hover:opacity-100 transition duration-150" />
 						</Link>
 						<Link
 							href={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolio.id}/${portfolio.file}`}
