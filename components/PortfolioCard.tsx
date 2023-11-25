@@ -2,7 +2,7 @@ import {Portfolio} from '@/hooks/types/portfolios';
 import Link from 'next/link';
 import {Button} from './ui/button';
 import Image from 'next/image';
-import {ChevronLeft} from 'lucide-react';
+import {ChevronLeft, FlagIcon} from 'lucide-react';
 export default function PortfolioCard(props: {portfolio: Portfolio}) {
 	const portfolio = props.portfolio;
 	return (
@@ -32,6 +32,11 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 						height={720}
 						aria-hidden
 					/>
+					<div className="relative top-[-200px] right-[-356px] opacity-0 group-hover:opacity-100">
+						<Link href="https://github.com/hivemindhq/portfolios/issues/new/choose">
+							<FlagIcon className="w-5 h-5 text-red-500 opacity-40 hover:opacity-100" />
+						</Link>
+					</div>
 					<div className="ease rounded-2xl pointer-events-none absolute inset-0 border border-black/5 transition duration-150 group-hover:bg-black/20"></div>
 				</Link>
 				<h1 className="truncate font-medium">
