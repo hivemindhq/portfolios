@@ -1,5 +1,5 @@
-name: Removal Request
-description: Request a portfolio be added to our evergrowing database!
+name: Removal/Modification Request
+description: Request a portfolio be removed or modified from our database.
 title: 'Portfolio Removal/Modification » '
 labels: ['modification']
 body:
