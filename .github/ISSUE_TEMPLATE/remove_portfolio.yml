@@ -34,7 +34,7 @@ body:
   - type: dropdown
     id: field
     attributes:
-      label: 'Reason of request'
+      label: 'Type of request'
       description: What is this request's reasoning
       options:
         - Removal
@@ -51,7 +51,7 @@ body:
   - type: input
     id: removal-reason
     attributes:
-      label: 'Reason for Removal or Modification'
+      label: 'Description for Removal or Modification'
       description: Why do you want your team's portfolio removed or modified?
       placeholder: I want this portfolio removed or modified because...
     validations:

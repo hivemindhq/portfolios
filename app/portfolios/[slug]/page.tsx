@@ -102,7 +102,7 @@ export default function Page({params: {slug}}: {params: {slug: string}}) {
 						</div>
 						<div className="my-6">
 							<Link
-								href={`https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=modification&projects=&template=remove_portfolio.yml&title=Portfolio+Removal%2FModification+%C2%BB+${portfolio.team_name}&team_name=${portfolio.team_name}&team_number=${portfolio.team_number}`}
+								href={`https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=modification&projects=&template=remove_portfolio.yml&title=Portfolio+Removal%2FModification+%C2%BB+${portfolio.team_name}&team_name=${portfolio.team_name}&team_number=${portfolio.team_number}&team_region=${portfolio.region}`}
 							>
 								<Button variant={'secondary'}>
 									<FlagIcon className="mr-2 h-4 w-4" /> Submit Removal or Modification Request
