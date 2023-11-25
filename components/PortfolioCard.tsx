@@ -33,7 +33,10 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 						aria-hidden
 					/>
 					<div className="relative top-[-200px] right-[-356px] opacity-0 group-hover:opacity-100 transition duration-150">
-						<Link href="https://github.com/hivemindhq/portfolios/issues/new/choose">
+						<Link
+							href={`https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=modification&projects=&template=remove_portfolio.yml&title=Portfolio+Removal%2FModification+%C2%BB+${portfolio.team_name}&team_name=${portfolio.team_name}&team_number=${portfolio.team_number}&team_region=${portfolio.region}`}
+							target="_blank"
+						>
 							<FlagIcon className="w-5 h-5 text-red-500 opacity-40 hover:opacity-100 transition duration-150" />
 						</Link>
 					</div>
