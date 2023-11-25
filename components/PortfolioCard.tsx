@@ -12,12 +12,21 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 					<span className="opacity-40 my-auto">
 						{portfolio.team_number} &bull; {portfolio.award} {portfolio.award_ranking}
 					</span>
-					<Link
-						href={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolio.id}/${portfolio.file}`}
-						target="_blank"
-					>
-						<Button variant={'outline'}>Open</Button>
-					</Link>
+					<div className="flex space-x-4">
+						<Link
+							href={`https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=modification&projects=&template=remove_portfolio.yml&title=Portfolio+Removal%2FModification+%C2%BB+${portfolio.team_name}&team_name=${portfolio.team_name}&team_number=${portfolio.team_number}&team_region=${portfolio.region}`}
+							target="_blank"
+							className="my-auto"
+						>
+							<FlagIcon className="w-5 h-5 text-red-500 opacity-20 hover:opacity-100 transition duration-150" />
+						</Link>
+						<Link
+							href={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolio.id}/${portfolio.file}`}
+							target="_blank"
+						>
+							<Button variant={'outline'}>Open</Button>
+						</Link>
+					</div>
 				</div>
 				<Link
 					className="group relative block"
@@ -32,14 +41,6 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 						height={720}
 						aria-hidden
 					/>
-					<div className="relative top-[-200px] right-[-356px] opacity-0 group-hover:opacity-100 transition duration-150">
-						<Link
-							href={`https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=modification&projects=&template=remove_portfolio.yml&title=Portfolio+Removal%2FModification+%C2%BB+${portfolio.team_name}&team_name=${portfolio.team_name}&team_number=${portfolio.team_number}&team_region=${portfolio.region}`}
-							target="_blank"
-						>
-							<FlagIcon className="w-5 h-5 text-red-500 opacity-40 hover:opacity-100 transition duration-150" />
-						</Link>
-					</div>
 					<div className="ease rounded-2xl pointer-events-none absolute inset-0 border border-black/5 transition duration-150 group-hover:bg-black/20"></div>
 				</Link>
 				<h1 className="truncate font-medium">
