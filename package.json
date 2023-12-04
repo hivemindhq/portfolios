@@ -19,7 +19,7 @@
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.0.0",
 		"envsafe": "^2.0.3",
-		"framer-motion": "^10.16.9",
+		"framer-motion": "^10.16.12",
 		"geist": "^1.1.0",
 		"lucide-react": "^0.294.0",
 		"next": "14.0.3",
