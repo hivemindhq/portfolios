@@ -25,11 +25,19 @@ import {
 } from './ui/drawer';
 import {Input} from './ui/input';
 import {Label} from './ui/label';
+import {fetcher} from '@/lib/fetcher';
+import {InferAPIResponse} from 'nextkit';
+import type AccountRegister from '@/pages/api/auth/register';
+import {useMe} from '@/hooks/use-user';
+import {useRouter} from 'next/navigation';
 
 export function AuthDialog() {
 	const [open, setOpen] = useState(false);
 	const [login, setLogin] = useState(true);
 	const isDesktop = useMediaQuery('(min-width: 768px)');
+
+	const router = useRouter();
+	const {mutate} = useMe();
 
 	const toggleMode = () => {
 		setLogin(old => !old);
@@ -44,9 +52,19 @@ export function AuthDialog() {
 				<DialogContent className="sm:max-w-[425px]">
 					<DialogHeader>
 						<DialogTitle>{login ? 'Login' : 'Register'}</DialogTitle>
-						<DialogDescription>Login to favorite and submit portfolios!</DialogDescription>
+						<DialogDescription>
+							{login ? 'Login' : 'Register'} to favorite and submit portfolios!
+						</DialogDescription>
 					</DialogHeader>
-					<RegisterForm />
+					{login ? <LoginForm /> : <RegisterForm />}
+					<p className="text-xs text-center opacity-70">
+						You&apos;re currently {login ? 'logging in' : 'making a new account'}, if you would like
+						to {login ? 'register' : 'login'},{' '}
+						<a onClick={toggleMode} className="cursor-pointer underline font-semibold">
+							click here
+						</a>
+						!
+					</p>
 				</DialogContent>
 			</Dialog>
 		);
@@ -59,10 +77,20 @@ export function AuthDialog() {
 			</DrawerTrigger>
 			<DrawerContent>
 				<DrawerHeader className="text-left">
-					<DrawerTitle>Login</DrawerTitle>
-					<DrawerDescription>Login to favorite and submit portfolios!</DrawerDescription>
+					<DrawerTitle>{login ? 'Login' : 'Register'}</DrawerTitle>
+					<DrawerDescription>
+						{login ? 'Login' : 'Register'} to favorite and submit portfolios!
+					</DrawerDescription>
 				</DrawerHeader>
-				<LoginForm className="px-4" />
+				{login ? <LoginForm className="px-4" /> : <RegisterForm className="px-4" />}
+				<p className="text-xs text-center opacity-70 my-4">
+					You&apos;re currently {login ? 'logging in' : 'making a new account'}, if you would like
+					to {login ? 'register' : 'login'},{' '}
+					<a onClick={toggleMode} className="cursor-pointer underline font-semibold">
+						click here
+					</a>
+					!
+				</p>
 				<DrawerFooter className="pt-2">
 					<DrawerClose asChild>
 						<Button variant="outline">Cancel</Button>
@@ -75,7 +103,7 @@ export function AuthDialog() {
 
 function LoginForm({className}: React.ComponentProps<'form'>) {
 	return (
-		<form className={cn('grid items-start gap-4', className)}>
+		<form className={cn('grid items-start gap-4')} onSubmit={async event => {}}>
 			<div className="grid gap-2">
 				<Label htmlFor="email">Email</Label>
 				<Input type="email" id="email" placeholder="io@itspolar.dev" />
@@ -106,7 +134,7 @@ function RegisterForm({className}: React.ComponentProps<'form'>) {
 				<Label htmlFor="password">Password</Label>
 				<Input type="password" id="password" placeholder="Password" />
 			</div>
-			<Button type="submit">Login</Button>
+			<Button type="submit">Register</Button>
 		</form>
 	);
 }

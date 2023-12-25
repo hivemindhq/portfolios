@@ -3,6 +3,7 @@ import './globals.scss';
 import {GeistSans} from 'geist/font/sans';
 import {cn} from '@/lib/utils';
 import {PHProvider} from '@/server/posthog';
+import {Toaster} from '@/components/ui/sonner';
 
 export const metadata: Metadata = {
 	title: 'Portfolios',
@@ -13,7 +14,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body className={cn('min-h-screen bg-background antialiased', GeistSans.className)}>
-				<PHProvider>{children}</PHProvider>
+				<PHProvider>
+					{children}
+					<Toaster />
+				</PHProvider>
 			</body>
 		</html>
 	);
