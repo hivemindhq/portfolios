@@ -15,3 +15,7 @@ model User {
     name     String
     password String
 }
+
+model Portfolio {
+    id Int @id @default(autoincrement())
+}
