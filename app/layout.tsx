@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.scss';
 import {GeistSans} from 'geist/font/sans';
 import {cn} from '@/lib/utils';
+import {PHProvider} from '@/server/posthog';
 
 export const metadata: Metadata = {
 	title: 'Portfolios',
@@ -12,7 +13,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body className={cn('min-h-screen bg-background antialiased', GeistSans.className)}>
-				{children}
+				<PHProvider>{children}</PHProvider>
 			</body>
 		</html>
 	);
