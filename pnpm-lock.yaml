@@ -24,8 +24,8 @@ dependencies:
     specifier: ^1.0.4
     version: 1.0.4(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
   alistair:
-    specifier: ^1.5.5
-    version: 1.5.5(react@18.2.0)
+    specifier: ^1.5.6
+    version: 1.5.6(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -3346,8 +3346,8 @@ packages:
       uri-js: 4.4.1
     dev: true
 
-  /alistair@1.5.5(react@18.2.0):
-    resolution: {integrity: sha512-9pqI41rc30hQvD00+ukFF3DRhDUxZlR7NdavJZRjzZvvGxgkC6+UQ8kJXN93lhRT4BGj6vqLb2ZVutuPDT6Uhw==}
+  /alistair@1.5.6(react@18.2.0):
+    resolution: {integrity: sha512-HrG8kcxlN1enT6duV4jlQLYiUcidtUQLDFyEsF+JPjXM29LsKHl923y75YZ8POzZ0zKZxSMhxJU4K0uVsQlhDw==}
     peerDependencies:
       react: '*'
     dependencies:
