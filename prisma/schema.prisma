@@ -10,12 +10,31 @@ datasource db {
 }
 
 model User {
-    id       Int    @id @default(autoincrement())
-    email    String @unique
-    name     String
-    password String
+    id                   Int     @id @default(autoincrement())
+    email                String  @unique
+    name                 String
+    password             String
+    site_admin           Boolean
+    owned_portfolios     Int[]
+    favorited_portfolios Int[]
+}
+
+model Report {
+    id        Int     @id @default(autoincrement())
+    userId    Int
+    content   String
+    confirmed Boolean
 }
 
 model Portfolio {
-    id Int @id @default(autoincrement())
+    id            Int    @id @default(autoincrement())
+    team_name     String
+    team_number   String
+    season        String
+    division      String
+    type          String
+    award         String
+    award_ranking Int
+    s3_url_thumb  String
+    s3_url        String
 }
