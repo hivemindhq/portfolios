@@ -6,6 +6,7 @@ import {PHProvider} from '@/server/posthog';
 import {Toaster} from '@/components/ui/sonner';
 import Navbar from '@/components/navbar';
 import SiteNav from '@/components/site-nav';
+import {ThemeProvider} from '@/components/theme-provider';
 
 export const metadata: Metadata = {
 	title: 'Portfolios',
@@ -16,11 +17,13 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body className={cn('min-h-screen bg-background antialiased', GeistSans.className)}>
-				<PHProvider>
-					<SiteNav />
-					{children}
-					<Toaster />
-				</PHProvider>
+				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+					<PHProvider>
+						<SiteNav />
+						{children}
+						<Toaster />
+					</PHProvider>
+				</ThemeProvider>
 			</body>
 		</html>
 	);

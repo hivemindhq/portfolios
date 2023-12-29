@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Navbar from './navbar';
 import {Button} from './ui/button';
+import {ModeToggle} from './mode-toggle';
 
 export default function SiteNav() {
 	return (
@@ -8,6 +9,9 @@ export default function SiteNav() {
 			<div className="container flex h-14 max-w-screen-2xl items-center">
 				<Navbar />
 				<div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+					<div className="">
+						<ModeToggle />
+					</div>
 					<Link href="/auth">
 						<Button asChild variant={'outline'}>
 							<span>Login</span>
