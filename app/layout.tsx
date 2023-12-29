@@ -7,6 +7,7 @@ import {Toaster} from '@/components/ui/sonner';
 import Navbar from '@/components/navbar';
 import SiteNav from '@/components/site-nav';
 import {ThemeProvider} from '@/components/theme-provider';
+import Footer from '@/components/footer';
 
 export const metadata: Metadata = {
 	title: 'Portfolios',
@@ -22,6 +23,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 						<SiteNav />
 						{children}
 						<Toaster />
+						<Footer />
 					</PHProvider>
 				</ThemeProvider>
 			</body>
