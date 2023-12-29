@@ -60,7 +60,7 @@ export default function PrivacyPolicy() {
 						</a>
 						.
 					</p>
-					<p>Thank you for being responsible.</p>
+					<p className="opacity-70">Thank you for being responsible.</p>
 					<h2 className="text-xl font-semibold py-4">Communications</h2>
 					<p className="opacity-70">
 						By creating an account on our Service, you agree to subscribe to newsletters, marketing
@@ -108,6 +108,86 @@ export default function PrivacyPolicy() {
 								fraudulent, or harmful purpose or activity.
 							</li>
 						</ul>
+						Additionally, you agree not to:
+						<ul className="list-disc ms-4 my-5 space-y-3">
+							<li>
+								Use Service in any matter that could disable, overburden, damage, or impair Service
+								or interfere with any other party&apos;s use of Service
+							</li>
+							<li>
+								Use any device, software, or routine that interferes with the proper working of
+								Service.
+							</li>
+							<li>
+								Distribute any viruses, trojan horses, worms, logic bombs, or any other material
+								which is malicious or technologically harmful.
+							</li>
+							<li>
+								Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts
+								of Service, the server which Service is stored, or any server, computer, or database
+								connected to Service.
+							</li>
+							<li>
+								Attack Service via a denial-of-service attack or a distributed denial-of-service
+								attack.
+							</li>
+							<li>Otherwise attempt to interfere with the proper working of Service</li>
+						</ul>
+					</p>
+					<h2 className="text-xl font-bold py-4">No Use by Minors</h2>
+					<p className="opacity-70">
+						Service&apos;s user dashboard is only intended for access and use by individuals at
+						least thirteen (13) years old. By accessing or using any of these services, you warrent
+						and represent that you are atleast thirteen (13) years of age, and with full authority,
+						right, and capacity to enter this agreement and abide by all of the terms and conditions
+						of Terms. If you are not at least thirteen (13) years old, you are prohibited from
+						accessing our dashboard.
+					</p>
+					<h2 className="text-xl font-bold py-4">Accounts</h2>
+					<p className="opacity-70">
+						When you create an account with us, you guarantee that you are above the age of 13, and
+						that the information you provide us is accurate, complete, and current at all times.
+						Inaccurate, incomplete, or obsolete infomration may result in immediate termination of
+						your account on Service.
+					</p>
+					<p className="opacity-70">
+						You are responsible for maintaining the confidentiality of your accounty and password,
+						including but not limited to the restriction of access to your comuter and/or your
+						account. You agree to accept responsibility for any and all activities or actions that
+						occur under your account and/or password, whether your password is with our Service or a
+						third-party service. You must notify us immediately upon becoming aware of any breach of
+						security or unauthorized use of your account
+					</p>
+					<p className="opacity-70">
+						You may not use as a username the name of another person or entity that is not lawfully
+						availible for use, a name or trademark that is subject to any rights of another person
+						or entity other than you, without appropriate authorization. You may not use as a
+						username any name that is offensive, vulgar, or obscene.
+					</p>
+					<p className="opacity-70">
+						We reserve the right to refuse service, terminate accounts, remove or edit content in
+						our sole discretion.
+					</p>
+					<h2 className="text-xl font-bold py-4">Terminiation</h2>
+					<p className="opacity-70">
+						We may terminate or suspend your account and bar access to Service immediately, without
+						prior notice or liability, under our discretion, for any reason whatsoever, and without
+						limitation, including but not limited to a breach of Terms
+					</p>
+					<p className="opacity-70">
+						If you wish to terminate your own account, please email us at{' '}
+						<a
+							href="mailto:webm@hivemindrobotics.net"
+							className="underline hover:opacity-70 transition-all"
+						>
+							webm@hivemindrobotics.net
+						</a>{' '}
+						with the email belonging to the account you wish to terminate.
+					</p>
+					<p className="opacity-70">
+						All provisions of Terms which by their nature should survive termination shall survive
+						termination, including, without limitation, ownership provisions, and limitations of
+						liability.
 					</p>
 					<h2 className="text-xl font-bold py-4">Contact Us</h2>
 					<p className="opacity-70">
