@@ -24,6 +24,8 @@
     "cookie": "^0.6.0",
     "crypto": "^1.0.1",
     "dayjs": "^1.11.10",
+    "embla-carousel-autoplay": "8.0.0-rc17",
+    "embla-carousel-react": "8.0.0-rc17",
     "envsafe": "^2.0.3",
     "geist": "^1.2.0",
     "lucide-react": "^0.302.0",

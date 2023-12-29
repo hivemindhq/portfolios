@@ -1,6 +1,7 @@
 'use client';
 
 import Announcement from '@/components/announcement';
+import HomepageCarousel from '@/components/homepage-carousel';
 import {Button} from '@/components/ui/button';
 import {GithubIcon, StarIcon} from 'lucide-react';
 import Image from 'next/image';
@@ -44,6 +45,9 @@ export default function Home() {
 						</Button>
 					</div>
 				</section>
+				<div className="">
+					<HomepageCarousel />
+				</div>
 			</div>
 		</main>
 	);
