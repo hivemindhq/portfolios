@@ -25,6 +25,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 				<PlausibleProvider
 					domain="portfolios.hivemindrobotics.net"
 					customDomain="lab.itzpolar.me"
+					selfHosted
 				/>
 			</head>
 			<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
