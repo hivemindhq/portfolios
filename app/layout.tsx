@@ -44,12 +44,6 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 
 							<div className="flex">
 								<div className="ms-auto flex">
-									<img
-										className="opacity-40"
-										src="https://hits-app.vercel.app/hits?url=https://portfolios.hivemindrobotics.net"
-										alt="Counter"
-										height={20}
-									/>
 									<Link
 										className="opacity-40 transition hover:opacity-60"
 										href="https://github.com/hivemindhq/portfolios"
