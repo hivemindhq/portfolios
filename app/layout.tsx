@@ -24,7 +24,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 			<head>
 				<PlausibleProvider
 					domain="portfolios.hivemindrobotics.net"
-					customDomain="https://lab.itzpolar.me"
+					scriptProps={{
+						src: 'https://lab.itzpolar.me/js/script.js',
+					}}
 					selfHosted
 				/>
 			</head>
