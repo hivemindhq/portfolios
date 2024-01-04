@@ -10,6 +10,8 @@ import {GithubIcon} from 'lucide-react';
 import {ThemeProvider} from '@/components/ThemeProvider';
 import {ModeToggle} from '@/components/ModeSelector';
 import Link from 'next/link';
+import Script from 'next/script';
+import PlausibleProvider from 'next-plausible';
 
 export const metadata: Metadata = {
 	title: 'Portfolios',
@@ -19,6 +21,12 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html lang="en" suppressHydrationWarning>
+			<head>
+				<PlausibleProvider
+					domain="portfolios.hivemindrobotics.net"
+					customDomain="lab.itzpolar.me"
+				/>
+			</head>
 			<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 				<body className={cn('min-h-screen bg-background antialiased', GeistSans.className)}>
 					<Toaster richColors />

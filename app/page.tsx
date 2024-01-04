@@ -14,6 +14,8 @@ import {toast} from 'sonner';
 import {cache} from 'react';
 import {ThemeProvider} from '@/components/ThemeProvider';
 import {ModeToggle} from '@/components/ModeSelector';
+import Script from 'next/script';
+import PlausibleProvider from 'next-plausible';
 
 export default function Home() {
 	const [portfolios, setPortfolios] = useState<Portfolio[]>();
