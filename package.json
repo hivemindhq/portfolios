@@ -21,7 +21,7 @@
 		"envsafe": "^2.0.3",
 		"framer-motion": "^10.16.16",
 		"geist": "^1.2.0",
-		"lucide-react": "^0.301.0",
+		"lucide-react": "^0.344.0",
 		"next": "14.0.4",
 		"next-plausible": "^3.12.0",
 		"next-themes": "^0.2.1",
