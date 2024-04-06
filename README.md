@@ -44,11 +44,11 @@ Usually they will have an interface where you can paste your environment variabl
 
 ## Contributing
 
-Contributing is always welcome, wether you want to add a portfolio, or a feature to the web client, we will usually accept most pull-requests!
+Contributing is always welcome, whether you want to add a portfolio, or a feature to the web client, we will usually accept most pull-requests!
 
 **Want to add a portfolio?**
 
-You can add your portfolio by submitting the form [found here](https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=addition&projects=&template=add_portfolio.yml&title=Portfolios+%C2%BB+), You are required to provide all fields. Your portfolio will then be queued for review, and then will be added shortly after.
+You can add your portfolio by submitting the form [found here](https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=addition&projects=&template=add_portfolio.yml&title=Portfolios+%C2%BB+).2 You are required to provide all fields. Your portfolio will then be queued for review, and then will be added shortly after.
 
 ---
 
