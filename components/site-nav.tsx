@@ -5,7 +5,7 @@ import Navbar from './navbar';
 import {Button} from './ui/button';
 import {ModeToggle} from './mode-toggle';
 import {useMe} from '@/hooks/use-user';
-import {Avatar, AvatarFallback} from './ui/avatar';
+import {Avatar, AvatarFallback, AvatarImage} from './ui/avatar';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -36,6 +36,7 @@ export default function SiteNav() {
 						<DropdownMenu>
 							<DropdownMenuTrigger>
 								<Avatar>
+									{user.profile_picture != null ? <AvatarImage src={user.profile_picture}></AvatarImage> : <></>}
 									<AvatarFallback>{user.name.charAt(0).toUpperCase()}</AvatarFallback>
 								</Avatar>
 							</DropdownMenuTrigger>
@@ -43,10 +44,12 @@ export default function SiteNav() {
 								<DropdownMenuLabel>Hi there, {user.name}!</DropdownMenuLabel>
 								<DropdownMenuSeparator />
 								<DropdownMenuGroup>
-									<DropdownMenuItem>
-										<User className="mr-2 h-4 w-4" />
-										<span>Profile</span>
-									</DropdownMenuItem>
+									<Link href="/profile">
+										<DropdownMenuItem>
+											<User className="mr-2 h-4 w-4" />
+											<span>Profile</span>
+										</DropdownMenuItem>
+									</Link>
 									<DropdownMenuItem>
 										<Star className="mr-2 h-4 w-4" />
 										<span>Favorites</span>

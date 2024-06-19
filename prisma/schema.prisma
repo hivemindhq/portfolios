@@ -15,7 +15,9 @@ model User {
   name                 String
   team                 String
   password             String
+  verified             Boolean @default(false)
   site_admin           Boolean
+  profile_picture      String?
   owned_portfolios     Int[]
   favorited_portfolios Int[]
 }
@@ -35,6 +37,7 @@ model Portfolio {
   division      String
   type          String
   award         String
+  approved      Boolean @default(false)
   award_ranking Int
   s3_url_thumb  String
   s3_url        String
