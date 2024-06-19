@@ -9,15 +9,23 @@ import {Toaster} from 'react-hot-toast'
 import {ThemeProvider} from '@/components/theme-provider';
 import Footer from '@/components/footer';
 
+import localFont from 'next/font/local';
+import { Outfit } from 'next/font/google'
+
 export const metadata: Metadata = {
 	title: 'Portfolios',
 	description: 'A large collection of award-winning FRC and FTC documentation',
 };
 
+const fontSans = Outfit({
+	subsets: ["latin"],
+})
+
+
 export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={cn('min-h-screen bg-background antialiased', GeistSans.className)}>
+			<body className={cn('min-h-screen bg-background antialiased', fontSans.className)}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 					<PHProvider>
 						<SiteNav />

@@ -54,10 +54,12 @@ export default function SiteNav() {
 										<Star className="mr-2 h-4 w-4" />
 										<span>Favorites</span>
 									</DropdownMenuItem>
-									<DropdownMenuItem>
-										<Bookmark className="mr-2 h-4 w-4" />
-										<span>Your Portfolios</span>
-									</DropdownMenuItem>
+									<Link href="/dashboard">
+										<DropdownMenuItem>
+											<Bookmark className="mr-2 h-4 w-4" />
+											<span>Your Portfolios</span>
+										</DropdownMenuItem>
+									</Link>
 									{user.site_admin ? (
 										<DropdownMenuItem>
 											<ShieldIcon className="mr-2 h-4 w-4" />

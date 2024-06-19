@@ -24,6 +24,7 @@ import {Alert, AlertDescription, AlertTitle} from '@/components/ui/alert';
 import type NameRequest from '@/pages/api/users/name'
 import { InferAPIResponse } from 'nextkit';
 import { fetcher } from '@/lib/fetcher';
+import AuthPreloader from '@/components/preloader';
 
 export default function UserSettingsPage() {
 	const {data: user, mutate} = useMe();
@@ -41,49 +42,7 @@ export default function UserSettingsPage() {
 
 	return (
 		<>
-			<AnimatePresence>
-				{!user && (
-					<motion.div
-						className="w-[100vw] h-[100vh] absolute flex bg-secondary top-0 z-50"
-						initial={{opacity: 0}}
-						animate={{opacity: 1}}
-						exit={{opacity: 0, scale: 0.8}}
-						transition={{
-							ease: 'easeInOut',
-						}}
-					>
-						<div className="m-auto space-y-4 text-center">
-							<div className="flex">
-								<Loader2 className="w-8 h-8 animate-spin mx-auto" />
-							</div>
-
-							<AnimatePresence>
-								{load && (
-									<motion.p
-										initial={{
-											y: -10,
-											opacity: 0,
-										}}
-										animate={{
-											y: 0,
-											opacity: 1,
-										}}
-									>
-										You&apos;ve been waiting a while, did you make sure you{' '}
-										<Link
-											href={'/auth'}
-											className="cursor-pointer underline hover:opacity-70 transition-all"
-										>
-											Logged in
-										</Link>
-										?
-									</motion.p>
-								)}
-							</AnimatePresence>
-						</div>
-					</motion.div>
-				)}
-			</AnimatePresence>
+			<AuthPreloader/>
 			<main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
 				<div className="mx-auto grid w-full max-w-6xl gap-2">
 					<h1 className="text-3xl font-semibold">Settings</h1>
