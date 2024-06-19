@@ -12,7 +12,7 @@ const schema = z.object({
 });
 
 export default api({
-	async POST({req, res}) {
+	async POST({req, res, context}) {
 		const body = schema.parse(req.body);
 
 		const user = await prisma.user.findFirst({

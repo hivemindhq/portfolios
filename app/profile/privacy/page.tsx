@@ -1,7 +1,6 @@
 'use client';
 
 import {useMe} from '@/hooks/use-user';
-import {UploadThingDropzone} from '@/lib/uploadthing';
 import toast from 'react-hot-toast';
 import {useTimer} from 'react-timer-hook';
 import {AnimatePresence, motion} from 'framer-motion';
