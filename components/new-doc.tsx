@@ -8,7 +8,7 @@ export default function NewDocument() {
 	return (
         <Dialog>
 		<DialogTrigger>
-			<Card className="w-[18rem] h-[24rem] flex hover:opacity-60 transition-all hover:scale-[0.95]">
+			<Card className="lg:w-[18rem] lg:h-[24rem] md:w-[9rem] md:h-[12rem] w-[9rem] h-[12rem] flex hover:opacity-60 transition-all hover:scale-[0.95]">
 				<PlusIcon className="w-[2rem] h-[2rem] text-primary m-auto" />
 			</Card>
 		</DialogTrigger>

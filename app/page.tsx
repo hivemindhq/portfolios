@@ -5,6 +5,7 @@ import HomepageCarousel from '@/components/homepage-carousel';
 import {Button} from '@/components/ui/button';
 import {GithubIcon, StarIcon} from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {TypeAnimation} from 'react-type-animation';
 
 export default function Home() {
@@ -29,6 +30,8 @@ export default function Home() {
 								1000,
 								'impact submission.',
 								1000,
+								'control award.',
+								1000
 							]}
 							wrapper="span"
 							speed={30}
@@ -39,7 +42,9 @@ export default function Home() {
 						Award winning, beautifully designed portfolios and documentation for FTC and FRC.
 					</p>
 					<div className="flex w-full items-center justify-center space-x-4 py-4 md:pb-10">
+						<Link href="/dashboard">
 						<Button>Submit Yours</Button>
+						</Link>
 						<Button variant={'outline'} className="flex space-x-2">
 							<StarIcon className="h-4 w-4" /> <p>Star the repository</p>
 						</Button>

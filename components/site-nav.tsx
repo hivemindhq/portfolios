@@ -36,7 +36,11 @@ export default function SiteNav() {
 						<DropdownMenu>
 							<DropdownMenuTrigger>
 								<Avatar>
-									{user.profile_picture != null ? <AvatarImage src={user.profile_picture}></AvatarImage> : <></>}
+									{user.profile_picture != null ? (
+										<AvatarImage src={user.profile_picture}></AvatarImage>
+									) : (
+										<></>
+									)}
 									<AvatarFallback>{user.name.charAt(0).toUpperCase()}</AvatarFallback>
 								</Avatar>
 							</DropdownMenuTrigger>
@@ -57,14 +61,16 @@ export default function SiteNav() {
 									<Link href="/dashboard">
 										<DropdownMenuItem>
 											<Bookmark className="mr-2 h-4 w-4" />
-											<span>Your Portfolios</span>
+											<span>Your Documents</span>
 										</DropdownMenuItem>
 									</Link>
 									{user.site_admin ? (
-										<DropdownMenuItem>
-											<ShieldIcon className="mr-2 h-4 w-4" />
-											<span>Admin Area</span>
-										</DropdownMenuItem>
+										<Link href="/me/admin">
+											<DropdownMenuItem>
+												<ShieldIcon className="mr-2 h-4 w-4" />
+												<span>Admin Area</span>
+											</DropdownMenuItem>
+										</Link>
 									) : (
 										<></>
 									)}

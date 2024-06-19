@@ -10,9 +10,11 @@ import {useState} from 'react';
 
 import type AddDocument from '@/pages/api/dashboard/add';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
+import {useMe} from '@/hooks/use-user';
 
 export default function NewDocFlow() {
+	const {data: user} = useMe();
 	const [percent, setPercent] = useState(1);
 	const [slide, setSlide] = useState(1);
 	const [formData, setFormData] = useState({
@@ -27,7 +29,7 @@ export default function NewDocFlow() {
 		division: '',
 		state: '',
 	});
-    const router = useRouter();
+	const router = useRouter();
 
 	const handleNext = () => {
 		setSlide(slide + 1);
@@ -65,175 +67,190 @@ export default function NewDocFlow() {
 			return;
 		}
 
-        router.push('/dashboard')
+		router.push('/dashboard');
 	};
 
 	return (
 		<>
 			<AuthPreloader />
 			<div className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
-				<div className="mx-auto grid w-full max-w-6xl gap-2">
-					<div className="mx-[8rem]">
-						<Progress value={percent} max={100} />
-						{slide === 1 && (
-							<div className="py-[1.5rem] text-center">
-								<h1 className="text-2xl font-semibold">Program</h1>
-								<p className="opacity-70 py-4">
-									We need to know some more information about the team you're submitting documents
-									for.
-								</p>
-								<div className="flex flex-col gap-4">
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">Team Name</label>
-										<Input
-											type="text"
-											name="teamName"
-											value={formData.teamName}
-											onChange={handleChange}
-											placeholder="Hivemind"
-											required
-											className="w-full"
-										/>
+				{user?.verified ? (
+					<>
+						<div className="mx-auto grid w-full max-w-6xl gap-2">
+							<div className="mx-[8rem]">
+								<Progress value={percent} max={100} />
+								{slide === 1 && (
+									<div className="py-[1.5rem] text-center">
+										<h1 className="text-2xl font-semibold">Program</h1>
+										<p className="opacity-70 py-4">
+											We need to know some more information about the team you're submitting
+											documents for.
+										</p>
+										<div className="flex flex-col gap-4">
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">Team Name</label>
+												<Input
+													type="text"
+													name="teamName"
+													value={formData.teamName}
+													onChange={handleChange}
+													placeholder="Hivemind"
+													required
+													className="w-full"
+												/>
+											</div>
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">Team Number</label>
+												<Input
+													type="text"
+													name="teamNumber"
+													value={formData.teamNumber}
+													onChange={handleChange}
+													placeholder="23396"
+													required
+													className="w-full"
+												/>
+											</div>
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">Team Program</label>
+												<Input
+													type="text"
+													name="teamProgram"
+													value={formData.teamProgram}
+													onChange={handleChange}
+													placeholder="FTC"
+													required
+													className="w-full"
+												/>
+											</div>
+											<Button onClick={handleNext}>Next</Button>
+										</div>
 									</div>
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">Team Number</label>
-										<Input
-											type="text"
-											name="teamNumber"
-											value={formData.teamNumber}
-											onChange={handleChange}
-											placeholder="23396"
-											required
-											className="w-full"
-										/>
+								)}
+								{slide === 2 && (
+									<div className="py-[1.5rem] text-center">
+										<h1 className="text-2xl font-semibold">Document Details</h1>
+										<p className="opacity-70 py-4">Please provide the details of the document.</p>
+										<div className="flex flex-col gap-4">
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">What is this document?</label>
+												<Input
+													type="text"
+													name="type"
+													value={formData.type}
+													onChange={handleChange}
+													placeholder="Engineering Portfolio"
+													required
+													className="w-full"
+												/>
+											</div>
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">
+													What season was this used for?
+												</label>
+												<Input
+													type="text"
+													name="season"
+													value={formData.season}
+													onChange={handleChange}
+													placeholder="Centerstage"
+													required
+													className="w-full"
+												/>
+											</div>
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">
+													Give a download link to the document
+												</label>
+												<Input
+													type="text"
+													name="downloadLink"
+													value={formData.downloadLink}
+													onChange={handleChange}
+													placeholder="https://cdn.hivemindrobotics.net/..."
+													required
+													className="w-full"
+												/>
+											</div>
+											<Button onClick={handleNext}>Next</Button>
+										</div>
 									</div>
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">Team Program</label>
-										<Input
-											type="text"
-											name="teamProgram"
-											value={formData.teamProgram}
-											onChange={handleChange}
-											placeholder="FTC"
-											required
-											className="w-full"
-										/>
+								)}
+								{slide === 3 && (
+									<div className="py-[1.5rem] text-center">
+										<h1 className="text-2xl font-semibold">Award Information</h1>
+										<p className="opacity-70 py-4">
+											Please provide the details of the awards this document may have recieved, if
+											this is not an award based document, you can submit now.
+										</p>
+										<div className="flex flex-col gap-4">
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">
+													What Award did the content of this document get your team?
+												</label>
+												<Input
+													type="text"
+													name="award"
+													value={formData.award}
+													onChange={handleChange}
+													placeholder="Inspire"
+													required
+													className="w-full"
+												/>
+											</div>
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">What ranking was the award?</label>
+												<Input
+													type="text"
+													name="awardRanking"
+													value={formData.awardRanking}
+													onChange={handleChange}
+													placeholder="3"
+													required
+													className="w-full"
+												/>
+											</div>
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">Where did you win this award?</label>
+												<Input
+													type="text"
+													name="division"
+													value={formData.division}
+													onChange={handleChange}
+													placeholder="Regionals"
+													required
+													className="w-full"
+												/>
+											</div>
+											<div className="flex flex-col gap-2">
+												<label className="text-sm font-medium">What state is your team from?</label>
+												<Input
+													type="text"
+													name="state"
+													value={formData.state}
+													onChange={handleChange}
+													placeholder="Tennessee"
+													required
+													className="w-full"
+												/>
+											</div>
+											<Button onClick={handleSubmit}>Submit</Button>
+										</div>
 									</div>
-									<Button onClick={handleNext}>Next</Button>
-								</div>
+								)}
 							</div>
-						)}
-						{slide === 2 && (
-							<div className="py-[1.5rem] text-center">
-								<h1 className="text-2xl font-semibold">Document Details</h1>
-								<p className="opacity-70 py-4">Please provide the details of the document.</p>
-								<div className="flex flex-col gap-4">
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">What is this document?</label>
-										<Input
-											type="text"
-											name="type"
-											value={formData.type}
-											onChange={handleChange}
-											placeholder="Engineering Portfolio"
-											required
-											className="w-full"
-										/>
-									</div>
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">What season was this used for?</label>
-										<Input
-											type="text"
-											name="season"
-											value={formData.season}
-											onChange={handleChange}
-											placeholder="Centerstage"
-											required
-											className="w-full"
-										/>
-									</div>
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">
-											Give a download link to the document
-										</label>
-										<Input
-											type="text"
-											name="downloadLink"
-											value={formData.downloadLink}
-											onChange={handleChange}
-											placeholder="https://cdn.hivemindrobotics.net/..."
-											required
-											className="w-full"
-										/>
-									</div>
-									<Button onClick={handleNext}>Next</Button>
-								</div>
-							</div>
-						)}
-						{slide === 3 && (
-							<div className="py-[1.5rem] text-center">
-								<h1 className="text-2xl font-semibold">Award Information</h1>
-								<p className="opacity-70 py-4">
-									Please provide the details of the awards this document may have recieved, if this
-									is not an award based document, you can submit now.
-								</p>
-								<div className="flex flex-col gap-4">
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">
-											What Award did the content of this document get your team?
-										</label>
-										<Input
-											type="text"
-											name="award"
-											value={formData.award}
-											onChange={handleChange}
-											placeholder="Inspire"
-											required
-											className="w-full"
-										/>
-									</div>
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">What ranking was the award?</label>
-										<Input
-											type="text"
-											name="awardRanking"
-											value={formData.awardRanking}
-											onChange={handleChange}
-											placeholder="3"
-											required
-											className="w-full"
-										/>
-									</div>
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">Where did you win this award?</label>
-										<Input
-											type="text"
-											name="division"
-											value={formData.division}
-											onChange={handleChange}
-											placeholder="Regionals"
-											required
-											className="w-full"
-										/>
-									</div>
-									<div className="flex flex-col gap-2">
-										<label className="text-sm font-medium">What state is your team from?</label>
-										<Input
-											type="text"
-											name="state"
-											value={formData.state}
-											onChange={handleChange}
-											placeholder="Tennessee"
-											required
-											className="w-full"
-										/>
-									</div>
-									<Button onClick={handleSubmit}>Submit</Button>
-								</div>
-							</div>
-						)}
-					</div>
-				</div>
+						</div>
+					</>
+				) : (
+					<>
+						<div className="m-auto text-center space-y-4 ">
+							<h1 className="text-2xl font-semibold">403</h1>
+							<p>
+								Your account is not verified, you can still favorite documents but you cannot yet submit new ones.
+							</p>
+						</div>
+					</>
+				)}
 			</div>
 		</>
 	);
