@@ -21,7 +21,9 @@ import {Input} from '@/components/ui/input';
 import {Checkbox} from '@/components/ui/checkbox';
 import {Alert, AlertDescription, AlertTitle} from '@/components/ui/alert';
 
-import type NameRequest from '@/pages/api/users/name'
+import type EmailRequest from '@/pages/api/users/email'
+import type NumberRequest from '@/pages/api/users/team/number'
+
 import { InferAPIResponse } from 'nextkit';
 import { fetcher } from '@/lib/fetcher';
 
@@ -44,7 +46,7 @@ export default function UserSettingsPage() {
 			<AnimatePresence>
 				{!user && (
 					<motion.div
-						className="w-[100vw] h-[100vh] absolute flex bg-secondary top-0 z-50"
+						className="w-[100vw] h-[100vh] absolute flex bg-white top-0 z-50"
 						initial={{opacity: 0}}
 						animate={{opacity: 1}}
 						exit={{opacity: 0, scale: 0.8}}
@@ -90,10 +92,10 @@ export default function UserSettingsPage() {
 				</div>
 				<div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
 					<nav className="grid gap-4 text-sm text-muted-foreground" x-chunk="dashboard-04-chunk-0">
-						<Link href="/profile" className="font-semibold text-primary">
+						<Link href="/profile">
 							General
 						</Link>
-						<Link href="/profile/privacy">Privacy</Link>
+						<Link href="/profile/privacy" className="font-semibold text-primary">Privacy</Link>
 					</nav>
 					<div className="grid gap-6">
 						{user?.verified ? (
@@ -108,26 +110,8 @@ export default function UserSettingsPage() {
 						)}
 						<Card>
 							<CardHeader>
-								<CardTitle>Profile Picture</CardTitle>
-								<CardDescription>Select your profile picture.</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<UploadThingDropzone
-									endpoint="imageUploader"
-									className="ut-button:bg-primary ut-button:text-secondary ut-label:text-primary"
-									onClientUploadComplete={res => {
-										toast.success('Upload complete!');
-									}}
-									onUploadError={(error: Error) => {
-										toast.error(error.message);
-									}}
-								/>
-							</CardContent>
-						</Card>
-						<Card>
-							<CardHeader>
-								<CardTitle>Preffered Name</CardTitle>
-								<CardDescription>Select your preffered name.</CardDescription>
+								<CardTitle>Email Address</CardTitle>
+								<CardDescription>Set your email address.</CardDescription>
 							</CardHeader>
 							<form
 								onSubmit={async (e) => {
@@ -137,8 +121,8 @@ export default function UserSettingsPage() {
 										new FormData(e.target as HTMLFormElement).entries(),
 									);
 
-									const promise = fetcher<InferAPIResponse<typeof NameRequest, 'POST'>>(
-										'/api/users/name',
+									const promise = fetcher<InferAPIResponse<typeof EmailRequest, 'POST'>>(
+										'/api/users/email',
 										{
 											method: 'POST',
 											headers: {'Content-Type': 'application/json'},
@@ -149,7 +133,7 @@ export default function UserSettingsPage() {
 									const res = await toast
 									.promise(promise, {
 										success: 'Success!',
-										loading: 'Changing your name...',
+										loading: 'Changing your email...',
 										error: (error: Error) => error?.message ?? 'Something went wrong!',
 									})
 									.catch(() => null);
@@ -162,7 +146,52 @@ export default function UserSettingsPage() {
 								}}
 							>
 								<CardContent>
-									<Input type="text" required id="name" name="name" placeholder={user?.name} />
+									<Input type="email" required id="email" name="email" placeholder={user?.email} />
+								</CardContent>
+								<CardFooter>
+									<Button type="submit">Save</Button>
+								</CardFooter>
+							</form>
+						</Card>
+                        <Card>
+							<CardHeader>
+								<CardTitle>Team Number</CardTitle>
+								<CardDescription>Set your team number.</CardDescription>
+							</CardHeader>
+							<form
+								onSubmit={async (e) => {
+									e.preventDefault();
+
+									const values = Object.fromEntries(
+										new FormData(e.target as HTMLFormElement).entries(),
+									);
+
+									const promise = fetcher<InferAPIResponse<typeof NumberRequest, 'POST'>>(
+										'/api/users/team/number',
+										{
+											method: 'POST',
+											headers: {'Content-Type': 'application/json'},
+											body: JSON.stringify(values),
+										},
+									);
+
+									const res = await toast
+									.promise(promise, {
+										success: 'Success!',
+										loading: 'Changing your email...',
+										error: (error: Error) => error?.message ?? 'Something went wrong!',
+									})
+									.catch(() => null);
+									
+									if (!res) {
+										return;
+									}
+
+									await mutate(res.user);
+								}}
+							>
+								<CardContent>
+									<Input type="text" required id="team" name="team" placeholder={user?.team} />
 								</CardContent>
 								<CardFooter>
 									<Button type="submit">Save</Button>

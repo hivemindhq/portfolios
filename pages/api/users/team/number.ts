@@ -4,7 +4,7 @@ import { NextkitException } from "nextkit";
 import { z } from "zod";
 
 const schema = z.object({
-	name: z.string()
+	team: z.string().min(1)
 });
 
 export default api({
@@ -36,7 +36,7 @@ export default api({
                 id: user.id
             },
             data: {
-                name: body.name
+                team: body.team
             }
         })
 

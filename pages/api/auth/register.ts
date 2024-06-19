@@ -9,8 +9,8 @@ import {serialize} from 'cookie';
 const schema = z.object({
 	email: z.string().email(),
 	name: z.string(),
-	team: z.string(),
-	password: z.string(),
+	team: z.string().min(1),
+	password: z.string().min(12),
 });
 
 export default api({

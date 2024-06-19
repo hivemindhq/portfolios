@@ -10,6 +10,19 @@ export const profileFileRouter = {
       .middleware(async ({ req, res }) => {
         const user = await getSessionFromRequest(req);
         if (!user) throw new UploadThingError("Unauthorized");
+
+        const pUser = await prisma.user.findFirst({
+          where: {
+            id: user
+          }
+        })
+
+        if (!pUser) throw new UploadThingError("Unauthorized");
+
+        if (!pUser?.verified) {
+          throw new UploadThingError("Not verified");
+        }
+
         return { userId: user };
       })
       .onUploadComplete(async ({ metadata, file }) => {
