@@ -14,6 +14,9 @@ importers:
       '@prisma/client':
         specifier: 5.7.1
         version: 5.7.1(prisma@5.7.1)
+      '@radix-ui/react-avatar':
+        specifier: ^1.0.4
+        version: 1.0.4(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@radix-ui/react-dialog':
         specifier: ^1.0.5
         version: 1.0.5(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -110,9 +113,6 @@ importers:
       sass:
         specifier: ^1.69.5
         version: 1.69.5
-      sonner:
-        specifier: ^1.2.4
-        version: 1.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       swr:
         specifier: ^2.2.4
         version: 2.2.4(react@18.2.0)
@@ -359,6 +359,19 @@ packages:
 
   '@radix-ui/react-arrow@1.0.3':
     resolution: {integrity: sha512-wSP+pHsB/jQRaL6voubsQ/ZlrGBHHrOjmBnr19hxYgtS0WvAFwZhK2WP/YY5yF9uKECCEEDGxuLxq1NBK51wFA==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@radix-ui/react-avatar@1.0.4':
+    resolution: {integrity: sha512-kVK2K7ZD3wwj3qhle0ElXhOjbezIgyl2hVvgwfIdexL3rN6zJmy5AqqIf+D31lxVppdzV8CjAfZ6PklkmInZLw==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -2068,12 +2081,6 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
 
-  sonner@1.2.4:
-    resolution: {integrity: sha512-WGLP2QQnomgewaCTsK7YWiLcy5n1Yj83vsL5cP4zHMmpSkmFsCYTpQKhlXJrPE5kzjwbqCkCFXcOpbKc4vaUaA==}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
-
   source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -2539,6 +2546,19 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.23.6
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    optionalDependencies:
+      '@types/react': 18.2.45
+      '@types/react-dom': 18.2.18
+
+  '@radix-ui/react-avatar@1.0.4(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@babel/runtime': 7.23.6
+      '@radix-ui/react-context': 1.0.1(@types/react@18.2.45)(react@18.2.0)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.45)(react@18.2.0)
+      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.45)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     optionalDependencies:
@@ -4403,11 +4423,6 @@ snapshots:
   signal-exit@4.1.0: {}
 
   slash@3.0.0: {}
-
-  sonner@1.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
 
   source-map-js@1.0.2: {}
 

@@ -3,9 +3,9 @@ import './globals.scss';
 import {GeistSans} from 'geist/font/sans';
 import {cn} from '@/lib/utils';
 import {PHProvider} from '@/server/posthog';
-import {Toaster} from '@/components/ui/sonner';
 import Navbar from '@/components/navbar';
 import SiteNav from '@/components/site-nav';
+import {Toaster} from 'react-hot-toast'
 import {ThemeProvider} from '@/components/theme-provider';
 import Footer from '@/components/footer';
 

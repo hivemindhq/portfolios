@@ -27,7 +27,7 @@ export default api({
 
 		/*
             user.password is the hashed password inside the database,
-            whilst body.password is the password sent from the client to the server
+            whilst body.password is the password sent from the client to the server :3
         */
 
 		const valid = await argon.verify(user.password, body.password);

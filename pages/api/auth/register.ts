@@ -9,7 +9,7 @@ import {serialize} from 'cookie';
 const schema = z.object({
 	email: z.string().email(),
 	name: z.string(),
-	team_number: z.string(),
+	team: z.string(),
 	password: z.string(),
 });
 
@@ -32,8 +32,10 @@ export default api({
 				email: body.email,
 				name: body.name,
 				password: await argon.hash(body.password),
-			},
-		});
+				team: body.team,
+				site_admin: false
+			}
+		})
 
 		const [token, expires] = await createSession(`${user.id}`);
 
@@ -46,5 +48,9 @@ export default api({
 				expires,
 			}),
 		);
+
+		return {
+			user: user
+		}
 	},
 });
