@@ -85,7 +85,7 @@ export default function UserSettingsPage() {
 						</Card>
 						<Card>
 							<CardHeader>
-								<CardTitle>Preffered Name</CardTitle>
+								<CardTitle>Perferred Name</CardTitle>
 								<CardDescription>Select your preffered name.</CardDescription>
 							</CardHeader>
 							<form

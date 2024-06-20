@@ -78,7 +78,7 @@ export default function AuthPage() {
 								<Input name="email" id="email" type="email" placeholder="hey@hivemindrobotics.net" required />
 							</div>
                             <div className="grid gap-2">
-								<Label htmlFor="email">Preffered Name</Label>
+								<Label htmlFor="email">Perferred Name</Label>
 								<Input name="name" id="name" type="text" placeholder="Polar" required />
 							</div>
                             <div className="grid gap-2">

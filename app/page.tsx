@@ -49,9 +49,11 @@ export default function Home() {
 						<Link href="/dashboard">
 							<Button>Submit Yours</Button>
 						</Link>
-						<Button variant={'outline'} className="flex space-x-2">
-							<StarIcon className="h-4 w-4" /> <p>Star the repository</p>
-						</Button>
+						<Link href="https://github.com/hivemindhq/portfolios" target="_blank">
+							<Button variant={'outline'} className="flex space-x-2">
+								<StarIcon className="h-4 w-4" /> <p>Star the repository</p>
+							</Button>
+						</Link>
 					</div>
 				</section>
 				<div className="">
