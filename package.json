@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "portfolios",
   "version": "0.1.0",
   "private": true,
@@ -40,15 +39,15 @@
     "framer-motion": "^11.2.10",
     "geist": "^1.2.0",
     "lucide-react": "^0.302.0",
-    "next": "14.0.4",
+    "next": "14.1.1",
     "next-themes": "^0.2.1",
     "nextkit": "^3.0.4",
     "posthog-js": "^1.96.1",
     "posthog-node": "^3.2.1",
     "prettier": "^3.1.1",
     "prisma": "^5.7.1",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-timer-hook": "^3.0.7",
     "react-type-animation": "^3.2.0",
@@ -61,62 +60,14 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "eslint": "^8",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3"
   }
-=======
-	"name": "portfolios",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"@nextui-org/react": "^2.2.9",
-		"@radix-ui/react-dropdown-menu": "^2.0.6",
-		"@radix-ui/react-select": "^2.0.0",
-		"@radix-ui/react-slot": "^1.0.2",
-		"@radix-ui/react-toggle": "^1.0.3",
-		"@radix-ui/react-toggle-group": "^1.0.4",
-		"alistair": "^1.6.0",
-		"class-variance-authority": "^0.7.0",
-		"clsx": "^2.0.0",
-		"envsafe": "^2.0.3",
-		"framer-motion": "^10.16.16",
-		"geist": "^1.2.0",
-		"lucide-react": "^0.360.0",
-		"next": "14.0.4",
-		"next-plausible": "^3.12.0",
-		"next-themes": "^0.2.1",
-		"pocketbase": "^0.20.1",
-		"prettier": "^3.1.1",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"sonner": "^1.4.41",
-		"tailwind-merge": "^2.2.0",
-		"tailwindcss-animate": "^1.0.7",
-		"zod": "^3.22.4"
-	},
-	"devDependencies": {
-		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
-		"autoprefixer": "^10.0.1",
-		"eslint": "^8",
-		"eslint-config-next": "14.0.4",
-		"postcss": "^8",
-		"tailwindcss": "^3.4.0",
-		"typescript": "^5"
-	}
->>>>>>> main
 }
