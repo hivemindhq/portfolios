@@ -50,7 +50,7 @@ export default function AdminDashboard() {
 					<h1 className="text-2xl font-semibold">Unverified Users</h1>
 					<div className="grid grid-cols-4 gap-4">
 						{unverifiedUsers?.map(u => (
-							<Card>
+							<Card key={u.id}>
 								<CardHeader>
 									<Avatar>
 										{u.profile_picture != null ? (
@@ -103,7 +103,7 @@ export default function AdminDashboard() {
 					<h1 className="text-2xl font-semibold">Unapproved Portfolios</h1>
 					<div className="grid grid-cols-3 gap-4">
 						{unapprovedPortfolios?.map(portfolio => (
-							<Card>
+							<Card key={portfolio.id}>
 								<CardHeader>
 									<CardTitle>
 										{portfolio.team_name} {portfolio.team_number}
