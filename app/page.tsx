@@ -6,7 +6,17 @@ import {Button} from '@/components/ui/button';
 import {ChevronRight, GithubIcon, StarIcon} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+<<<<<<< HEAD
 import {TypeAnimation} from 'react-type-animation';
+=======
+import {useEffect, useState} from 'react';
+import {toast} from 'sonner';
+import {cache} from 'react';
+import {ThemeProvider} from '@/components/ThemeProvider';
+import {ModeToggle} from '@/components/ModeSelector';
+import Script from 'next/script';
+import PlausibleProvider from 'next-plausible';
+>>>>>>> main
 
 export default function Home() {
 	return (

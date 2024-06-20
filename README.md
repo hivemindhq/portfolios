@@ -33,4 +33,24 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
+<<<<<<< HEAD
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+=======
+Once you have your host setup, you'll notice the frontend cannot deploy without some basic environment variables. You'll need to configure these environment variables inside your web-hosting provider.
+
+Usually they will have an interface where you can paste your environment variables. See [`env.example`](https://github.com/hivemindhq/portfolios/blob/main/.env.example) to see the schema for your environment variables.
+
+> Please note, you will need to include all environment variables for this site to function properly.
+
+## Contributing
+
+Contributing is always welcome, whether you want to add a portfolio, or a feature to the web client, we will usually accept most pull-requests!
+
+**Want to add a portfolio?**
+
+You can add your portfolio by submitting the form [found here](https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=addition&projects=&template=add_portfolio.yml&title=Portfolios+%C2%BB+). You are required to provide all fields. Your portfolio will then be queued for review, and then will be added shortly after.
+
+---
+
+Built with ❤️ by Hivemind Robotics
+>>>>>>> main
