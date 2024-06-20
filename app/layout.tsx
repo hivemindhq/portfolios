@@ -36,18 +36,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 			</head>
 			<body className={cn('min-h-screen bg-background antialiased', fontSans.className)}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-					{/* <SiteNav />
-						{children}
-						<Toaster />
-						<Footer /> */}
-					<div className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
-						<div className="m-auto text-center space-y-4 ">
-							<h1 className="text-2xl font-semibold">403</h1>
-							<p>
-								<b>Forbidden</b>, we are currently undergoing a maintenance period, please try again later.
-							</p>
-						</div>
-					</div>
+					<SiteNav />
+					{children}
+					<Toaster />
+					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>

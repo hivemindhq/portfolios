@@ -3,6 +3,7 @@
 import {getFTCDocuments} from '@/hooks/use-portfolio';
 import {useMe} from '@/hooks/use-user';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function FTCPage() {
 	const {data: portfolios} = getFTCDocuments();
@@ -17,11 +18,15 @@ export default function FTCPage() {
 							<div className="p-1 mx-auto">
 								<div className="group-hover:scale-[0.95] ease-out duration-300 transition-all group-hover:opacity-70">
 									<div className="flex aspect-square items-center justify-center group">
-										<span className="text-4xl font-semibold">
-											<img
-												className="rounded-2xl max-w-[20rem] ease-out duration-300 transition-all shadow-lg max-h-[20rem]"
+										<span className="text-4xl font-semibold flex">
+											<Image
+												className="rounded-2xl max-w-[20rem] m-auto ease-out duration-300 transition-all shadow-lg max-h-[20rem]"
 												src={portfolio.s3_url_thumb ? portfolio.s3_url_thumb : ''}
-											></img>
+												alt={`${portfolio.team_name} ${portfolio.season} ${portfolio.type}`}
+												height={300}
+												width={250}
+												loading={"lazy"}
+											/>
 										</span>
 									</div>
 								</div>
