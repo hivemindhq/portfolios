@@ -134,10 +134,10 @@ export default function PrivacyPolicy() {
 							<li>Otherwise attempt to interfere with the proper working of Service</li>
 						</ul>
 					</p>
-					<h2 className="text-xl font-bold py-4">No Use by Minors</h2>
+					<h2 className="text-xl font-bold py-4">No Unsupervised Use by Children</h2>
 					<p className="opacity-70">
 						Service&apos;s user dashboard is only intended for access and use by individuals at
-						least thirteen (13) years old. By accessing or using any of these services, you warrent
+						least thirteen (13) years old. By accessing or using any of these services, you warrant
 						and represent that you are atleast thirteen (13) years of age, and with full authority,
 						right, and capacity to enter this agreement and abide by all of the terms and conditions
 						of Terms. If you are not at least thirteen (13) years old, you are prohibited from

@@ -12,7 +12,7 @@ import { fetcher } from '@/lib/fetcher';
 import type AccountRegister from '@/pages/api/auth/register'
 import { InferAPIResponse } from 'nextkit';
 import { toast } from 'react-hot-toast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { useMe } from '@/hooks/use-user';
 import { useRouter } from 'next/navigation';
@@ -21,7 +21,13 @@ export default function AuthPage() {
 	const [loading, setLoading] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 	const router = useRouter();
-	const { mutate } = useMe();
+	const { data: user, mutate } = useMe();
+
+	useEffect(() => {
+		if (user != null) {
+			router.push('/profile')
+		}
+	}, [user])
 
 	return (
 		<>
@@ -96,7 +102,7 @@ export default function AuthPage() {
                                 <p className='text-xs text-center opacity-70'>By signing up you agree to our <Link href="/terms" className='underline'>Terms of Service</Link> and <Link href="/privacy" className='underline'>Privacy Policy</Link>.</p>
                             </div>
 							<Separator/>
-							<Button variant="default" className="w-full space-x-3 bg-indigo-500 hover:bg-indigo-400 text-white">
+							<Button disabled variant="default" className="w-full space-x-3 bg-indigo-500 hover:bg-indigo-400 text-white">
 								<SiDiscord/><p>Login with Discord</p>
 							</Button>
 						</form>

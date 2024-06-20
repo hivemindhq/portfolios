@@ -11,15 +11,21 @@ import type AccountRegister from '@/pages/api/auth/register';
 import {useMe} from '@/hooks/use-user';
 
 import {SiDiscord} from '@icons-pack/react-simple-icons';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {fetcher} from '@/lib/fetcher';
 import {InferAPIResponse} from 'nextkit';
 import toast from 'react-hot-toast';
 import {useRouter} from 'next/navigation';
 
 export default function AuthPage() {
-	const {mutate} = useMe();
+	const {data: user,mutate} = useMe();
 	const router = useRouter();
+
+	useEffect(() => {
+		if (user != null) {
+			router.push('/profile')
+		}
+	}, [user])
 
 	return (
 		<>
@@ -98,6 +104,7 @@ export default function AuthPage() {
 							<Separator />
 							<Button
 								variant="default"
+								disabled
 								className="w-full space-x-3 bg-indigo-500 hover:bg-indigo-400 text-white"
 							>
 								<SiDiscord />
