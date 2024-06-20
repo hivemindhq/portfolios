@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("POSTGRES_PRISMA_URL")
+  // directUrl         = env("POSTGRES_URL_NON_POOLING")
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id                   Int     @id @default(autoincrement())
+  email                String  @unique
+  name                 String
+  team                 String
+  password             String
+  verified             Boolean @default(false)
+  site_admin           Boolean
+  profile_picture      String?
+  owned_portfolios     Portfolio[]
+  favorited_portfolios Int[]
+}
+
+model Report {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  content   String
+  confirmed Boolean
+}
+
+model Portfolio {
+  id            Int    @id @default(autoincrement())
+  team_name     String
+  team_number   String
+  season        String
+  division      String
+  type          String
+  award         String
+  approved      Boolean @default(false)
+  ownerId       Int
+  owner         User    @relation(fields: [ownerId], references: [id])
+  download_url  String?
+  award_ranking Int
+  s3_url_thumb  String?
+  s3_url        String?
+}

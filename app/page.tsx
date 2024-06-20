@@ -1,150 +1,71 @@
 'use client';
 
-import PortfolioCard from '@/components/PortfolioCard';
+import Announcement from '@/components/announcement';
+import HomepageCarousel from '@/components/homepage-carousel';
 import {Button} from '@/components/ui/button';
-import {ToggleGroup, ToggleGroupItem} from '@/components/ui/toggle-group';
-import {Portfolio} from '@/hooks/types/portfolios';
-import {pb, sudo} from '@/lib/db/pocketbase';
-import {Select, SelectItem, Tab, Tabs} from '@nextui-org/react';
-import {Loader2, Star} from 'lucide-react';
+import {ChevronRight, GithubIcon, StarIcon} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import {useEffect, useState} from 'react';
-import {toast} from 'sonner';
-import {cache} from 'react';
-import {ThemeProvider} from '@/components/ThemeProvider';
-import {ModeToggle} from '@/components/ModeSelector';
-import Script from 'next/script';
-import PlausibleProvider from 'next-plausible';
+import {TypeAnimation} from 'react-type-animation';
 
 export default function Home() {
-	const [portfolios, setPortfolios] = useState<Portfolio[]>();
-
-	const [field, setField] = useState<string>('');
-	const [award, setAward] = useState<string>('');
-
-	useEffect(() => {
-		pb.collection('portfolios')
-			.getFullList({
-				sort: '@random',
-				fields: 'id, team_name, region, team_number, award_ranking, award, field, file, thumbnail',
-				expand: 'award, field',
-			})
-			.then(data => {
-				setPortfolios(data as unknown as Portfolio[]);
-			});
-	}, []);
-
-	if (!portfolios) {
-		return (
-			<ThemeProvider>
-				<div className="flex w-[100vw] h-[100vh]">
-					<div className="m-auto">
-						<Loader2 className="mr-2 h-[30px] w-[30px] animate-spin" />
-					</div>
-				</div>
-			</ThemeProvider>
-		);
-	}
-
 	return (
-		<>
-			<main className="justify-items-center overflow-x-hidden border-b light:border-black/5 dark:border-white/5 pb-8 md:py-8">
-				<header className="max-w-screen-xl mx-auto w-full px-4 grid items-end justify-items-center gap-4 md:grid-cols-2 md:justify-items-start">
-					<div className="grid max-w-lg content-start justify-items-center gap-3.5 py-16 md:max-w-md md:justify-items-start md:py-0">
-						<h1 className="overflow-auto bg-gradient-to-r from-neutral-500 dark:hidden to-black bg-clip-text text-5xl font-bold leading-tight tracking-tight text-transparent">
-							Portfolios
-						</h1>
-						<h1 className="overflow-auto bg-gradient-to-r from-neutral-500 hidden dark:flex to-white bg-clip-text text-5xl font-bold leading-tight tracking-tight text-transparent">
-							Portfolios
-						</h1>
-						<p className="text-2xl font-medium tracking-tight md:text-left text-center">
-							Award-winning FIRST Tech Challenge Portfolios
-						</p>
-						<div className="flex space-x-4">
-							<Link href="https://github.com/hivemindhq/portfolios" target="_blank">
-								<Button>
-									<Star className="w-4 h-4 me-2" />
-									Star the repository
-								</Button>
-							</Link>
-							<Link
-								href="https://github.com/hivemindhq/portfolios/issues/new?assignees=&labels=addition&projects=&template=add_portfolio.yml&title=Portfolios+%C2%BB+"
-								target="_blank"
-								className="hidden md:flex lg:flex"
-							>
-								<Button variant={'outline'}>Add yours in 5 minutes.</Button>
-							</Link>
-						</div>
-					</div>
-					<div className="grid w-full gap-2">
-						<div className="flex items-center justify-between">
-							<p className="text-sm opacity-40">{portfolios[0].team_number}</p>
-							<Link
-								href={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolios[0].id}/${portfolios[0].file}`}
-								target="_blank"
-							>
-								<Button variant={'outline'}>Open</Button>
-							</Link>
-						</div>
-						<Link className="group relative block" href={`/portfolios/${portfolios[0].id}`}>
-							<Image
-								src={`https://portfolioutility.pockethost.io/api/files/c11hpwzuzyy3nbm/${portfolios[0].id}/${portfolios[0].thumbnail}`}
-								className="rounded-2xl relative w-full"
-								alt={''}
-								width={1280}
-								height={720}
-							/>
-							<div className="ease rounded-2xl pointer-events-none absolute inset-0 border border-black/5 transition duration-150 group-hover:bg-black/20"></div>
+		<main className="flex-1">
+			<div className="container relative">
+				<section className="mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20">
+					<Announcement />
+					<h1 className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-6xl lg:leading-[1.1]">
+						Build your{' '}
+						<TypeAnimation
+							sequence={[
+								'next portfolio.',
+								1000,
+								'next big win.',
+								1000,
+								'sponsorship packet.',
+								1000,
+								'outreach logs.',
+								1000,
+								'technical binder.',
+								1000,
+								'impact submission.',
+								1000,
+								'control award.',
+								1000,
+							]}
+							wrapper="span"
+							speed={30}
+							repeat={Infinity}
+						/>
+					</h1>
+					<p className="max-w-[750px] text-center text-lg text-muted-foreground sm:text-xl">
+						Award winning, beautifully designed portfolios and documentation for FTC and{' '}
+						<em className="opacity-70">
+							FRC<span className="text-destructive">*</span>
+						</em>
+						.
+					</p>
+					<div className="flex w-full items-center justify-center space-x-4 py-4 md:pb-10">
+						<Link href="/dashboard">
+							<Button>Submit Yours</Button>
 						</Link>
-						<h1 className="truncate font-medium">{portfolios[0].team_name}</h1>
+						<Button variant={'outline'} className="flex space-x-2">
+							<StarIcon className="h-4 w-4" /> <p>Star the repository</p>
+						</Button>
 					</div>
-				</header>
-			</main>
-			<div className="overflow-x-hidden transition-all duration-300 ease-smooth">
-				<div className="max-w-screen-xl mx-auto w-full px-4 my-5">
-					<div className="w-full my-4 hidden md:flex lg:flex space-x-4">
-						<ToggleGroup disabled type="single" variant={'outline'}>
-							<ToggleGroupItem value="inspire">Inspire</ToggleGroupItem>
-							<ToggleGroupItem value="control">Control</ToggleGroupItem>
-							<ToggleGroupItem value="motivate">Motivate</ToggleGroupItem>
-							<ToggleGroupItem value="innovate">Innovate</ToggleGroupItem>
-							<ToggleGroupItem value="design">Design</ToggleGroupItem>
-							<ToggleGroupItem value="think">Think</ToggleGroupItem>
-						</ToggleGroup>
-						<ToggleGroup
-							disabled
-							onClick={e => setField('Worlds')}
-							type="single"
-							variant={'outline'}
-						>
-							<ToggleGroupItem value="worlds">Worlds</ToggleGroupItem>
-							<ToggleGroupItem value="regional">Regional</ToggleGroupItem>
-							<ToggleGroupItem value="qualifier">Qualifier</ToggleGroupItem>
-						</ToggleGroup>
-						<div className="justify-end">
-							<ModeToggle />
-						</div>
-					</div>
-					<div className="grid gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
-						{portfolios.map((portfolio: Portfolio, key: number) => {
-							if (award === '' || field === '') {
-								return <PortfolioCard portfolio={portfolio} key={key}></PortfolioCard>;
-							} else if (award || field) {
-								if (portfolio.award[0] == award || field === field) {
-									return <PortfolioCard portfolio={portfolio} key={key}></PortfolioCard>;
-								} else {
-									return;
-								}
-							} else if (field === '' || award) {
-								if (portfolio.award[0] === award) {
-									return <PortfolioCard portfolio={portfolio} key={key}></PortfolioCard>;
-								}
-							}
-						})}
+				</section>
+				<div className="">
+					<HomepageCarousel />
+					<div className="flex">
+						<a href="/ftc" className="mx-auto group opacity-70 hover:opacity-100">
+							<div className="flex my-8">
+								View all...{' '}
+								<ChevronRight className="h-4 w-4 relative left-[2px] group-hover:left-[5px] my-auto transition-all" />
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>
-		</>
+		</main>
 	);
 }
