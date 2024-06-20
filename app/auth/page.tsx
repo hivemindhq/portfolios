@@ -119,11 +119,7 @@ export default function AuthPage() {
 						</div>
 					</div>
 				</div>
-				<div className="hidden lg:flex bg-zinc-900">
-					<div className="grow flex flex-col justify-center items-center">
-						<img src="https://cdn.hivemindrobotics.net/intothedeep.gif" className='h-[300px]'/>
-					</div>
-				</div>
+				<div className="hidden bg-red-500 lg:block"></div>
 			</div>
 		</>
 	);
