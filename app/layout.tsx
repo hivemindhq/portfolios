@@ -3,6 +3,7 @@ import './globals.scss';
 import {GeistSans} from 'geist/font/sans';
 import {cn} from '@/lib/utils';
 import {PHProvider} from '@/server/posthog';
+import PlausibleProvider from 'next-plausible'
 import Navbar from '@/components/navbar';
 import SiteNav from '@/components/site-nav';
 import {Toaster} from 'react-hot-toast'
@@ -25,14 +26,21 @@ const fontSans = Outfit({
 export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html lang="en" suppressHydrationWarning>
+			<head>
+				<PlausibleProvider
+					domain="portfolios.hivemindrobotics.net"
+					scriptProps={{
+						src: 'https://lab.itzpolar.me/js/script.js',
+					}}
+					selfHosted
+				/>
+			</head>
 			<body className={cn('min-h-screen bg-background antialiased', fontSans.className)}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-					<PHProvider>
 						<SiteNav />
 						{children}
 						<Toaster />
 						<Footer />
-					</PHProvider>
 				</ThemeProvider>
 			</body>
 		</html>
