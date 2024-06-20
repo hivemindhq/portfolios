@@ -18,14 +18,14 @@ import toast from 'react-hot-toast';
 import {useRouter} from 'next/navigation';
 
 export default function AuthPage() {
-	const {data: user,mutate} = useMe();
+	const {data: user, mutate} = useMe();
 	const router = useRouter();
 
 	useEffect(() => {
 		if (user != null) {
-			router.push('/profile')
+			router.push('/profile');
 		}
-	}, [user])
+	}, [user]);
 
 	return (
 		<>
@@ -86,9 +86,6 @@ export default function AuthPage() {
 							<div className="grid gap-2">
 								<div className="flex items-center">
 									<Label htmlFor="password">Password</Label>
-									<Link href="/forgot-password" className="ml-auto inline-block text-sm underline">
-										Forgot your password?
-									</Link>
 								</div>
 								<Input
 									id="password"
