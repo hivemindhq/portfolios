@@ -5,15 +5,14 @@ export default function PrivacyPolicy() {
 				<div className="space-y-3">
 					<h1 className="text-2xl font-bold">Privacy Policy</h1>
 					<em>
-						<p className="opacity-70">Last updated: 12/29/2023</p>
+						<p className="opacity-70">Last updated: 06/20/2024</p>
 					</em>
 				</div>
 				<div className="my-12 space-y-4">
 					<h2 className="text-xl font-semibold">Introduction</h2>
 					<p className="opacity-70">
 						Welcome to <strong>Portfolios</strong>, this instance is operated by the non-profit
-						organization <strong>Hivemind Robotics</strong>, which is registered under Hackclub
-						Bank.
+						organization <strong>Hivemind Robotics</strong>.
 					</p>
 					<p className="opacity-70">
 						Hivemind Robotics (&ldquo;us&ldquo;, &ldquo;we&ldquo;, or &ldquo;our&ldquo;) operates
@@ -291,16 +290,16 @@ export default function PrivacyPolicy() {
 						We may use user analytics to analyse user experience, UI/UX, and track the activity of
 						our services so we can scale them if we need to.
 					</p>
-					<h3 className="text-md font-bold pb-2">PostHog</h3>
-					<p className="opacity-70">PostHog is provided by PostHog Inc.</p>
+					<h3 className="text-md font-bold pb-2">Plausible</h3>
+					<p className="opacity-70">Plausible is a self-run instance of Google Analytics, and is open-source.</p>
 					<p className="opacity-70">
-						PostHog is a analytics platform that allows us to view your experience on Portfolios.
+						Plausible is a analytics platform that allows us to track your experience on Portfolios.
 					</p>
 					<p className="opacity-70">
-						For more information on what data PostHog collects for what purpose and how the
-						protection of your data is ensured, please visit the PostHog Privacy Policy page{' '}
+						Although none of your data is ever sent to Plausible, you can find more information on what data we collect using Plausible for what purpose and how the
+						protection of your data is ensured, please visit the Plausible Privacy Policy page{' '}
 						<a
-							href="https://posthog.com/privacy"
+							href="https://plausible.io/data-policy"
 							className="underline hover:opacity-70 transition-all"
 						>
 							here
