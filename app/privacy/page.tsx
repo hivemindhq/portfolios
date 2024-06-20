@@ -118,7 +118,7 @@ export default function PrivacyPolicy() {
 						or when you access our Service through a mobile device.
 					</p>
 					<p className="opacity-70">
-						This Usage Data may include information such as your computer's Internet Protocol
+						This Usage Data may include information such as your computer&apos;s Internet Protocol
 						address (e.g. IP address), browser type, browser version, the pages of our Service that
 						you visit, the time and date of your visit, the time spent on those pages, unique device
 						identifiers, and other diagnostic data.

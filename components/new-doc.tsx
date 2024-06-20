@@ -14,7 +14,7 @@ export default function NewDocument() {
 		</DialogTrigger>
 		<DialogContent>
 			<DialogHeader>
-				<DialogTitle>You're about to be redirected.</DialogTitle>
+				<DialogTitle>You&apos;re about to be redirected.</DialogTitle>
 				<DialogDescription>
 					Creating a new document will redirect you to a seperate flow.
 				</DialogDescription>

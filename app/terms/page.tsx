@@ -113,7 +113,7 @@ export default function PrivacyPolicy() {
 						<ul className="list-disc ms-4 my-5 space-y-3">
 							<li>
 								Use the Service in any manner that could disable, overburden, damage, or impair the
-								Service or interfere with any other party's use of the Service.
+								Service or interfere with any other party&apos;s use of the Service.
 							</li>
 							<li>
 								Use any device, software, or routine that interferes with the proper working of the
@@ -137,7 +137,7 @@ export default function PrivacyPolicy() {
 					</p>
 					<h2 className="text-xl font-bold py-4">No Unsupervised Use by Children</h2>
 					<p className="opacity-70">
-						The Service's user dashboard is only intended for access and use by individuals at least
+						The Service&apos;s user dashboard is only intended for access and use by individuals at least
 						thirteen (13) years old. By accessing or using any of these services, you warrant and
 						represent that you are at least thirteen (13) years of age, and have full authority,
 						right, and capacity to enter into this agreement and abide by all of the terms and
