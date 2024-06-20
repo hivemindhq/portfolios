@@ -26,7 +26,7 @@ export default api({
 
         const port = await prisma.portfolio.findMany({
             where: {
-                userId: user.id
+                ownerId: user.id
             }
         })
 
