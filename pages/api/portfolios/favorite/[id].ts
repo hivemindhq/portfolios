@@ -1,5 +1,6 @@
 import {prisma} from '@/lib/util/db';
 import {api} from '@/server/api';
+import { Portfolio } from '@prisma/client';
 import {NextkitException} from 'nextkit';
 
 export default api({
@@ -27,14 +28,22 @@ export default api({
 			throw new NextkitException(400, 'Invalid ID');
 		}
 
+        let portfolios: number[] = [];
+
+        await Promise.all(
+            user.favorited_portfolios.map(async (portfolio) => {
+                portfolios.push(portfolio);
+            })
+        )
+
+        await portfolios.push(id);
+
         await prisma.user.update({
             where: {
                 id: user.id
             },
             data: {
-                favorited_portfolios: {
-                    // i need to figure out how to do this
-                }
+                favorited_portfolios: portfolios
             }
         })
 
