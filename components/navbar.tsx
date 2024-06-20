@@ -25,15 +25,13 @@ export default function Navbar() {
 				>
 					FTC
 				</Link>
-				<Link
-					href="/frc"
+				<span
 					className={cn(
-						'transition-colors hover:text-foreground/80',
-						pathname === '/frc' ? 'text-foreground' : 'text-foreground/60',
+						'text-foreground/30 cursor-not-allowed'
 					)}
 				>
 					FRC
-				</Link>
+				</span>
 			</nav>
 		</div>
 	);

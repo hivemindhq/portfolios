@@ -5,17 +5,17 @@ generator client {
 datasource db {
   provider          = "postgresql"
   url               = env("POSTGRES_PRISMA_URL")
-  directUrl         = env("POSTGRES_URL_NON_POOLING")
+  // directUrl         = env("POSTGRES_URL_NON_POOLING")
   shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
-  id                   Int         @id @default(autoincrement())
-  email                String      @unique
+  id                   Int     @id @default(autoincrement())
+  email                String  @unique
   name                 String
   team                 String
   password             String
-  verified             Boolean     @default(false)
+  verified             Boolean @default(false)
   site_admin           Boolean
   profile_picture      String?
   owned_portfolios     Portfolio[]
@@ -30,7 +30,7 @@ model Report {
 }
 
 model Portfolio {
-  id            Int     @id @default(autoincrement())
+  id            Int    @id @default(autoincrement())
   team_name     String
   team_number   String
   season        String
@@ -38,10 +38,10 @@ model Portfolio {
   type          String
   award         String
   approved      Boolean @default(false)
+  ownerId       Int
+  owner         User    @relation(fields: [ownerId], references: [id])
   download_url  String?
   award_ranking Int
   s3_url_thumb  String?
   s3_url        String?
-  User          User?   @relation(fields: [userId], references: [id])
-  userId        Int?
 }

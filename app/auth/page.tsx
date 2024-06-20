@@ -15,7 +15,7 @@ import {useState} from 'react';
 import {fetcher} from '@/lib/fetcher';
 import {InferAPIResponse} from 'nextkit';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
 
 export default function AuthPage() {
 	const {mutate} = useMe();

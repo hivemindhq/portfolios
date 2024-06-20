@@ -3,7 +3,7 @@
 import Announcement from '@/components/announcement';
 import HomepageCarousel from '@/components/homepage-carousel';
 import {Button} from '@/components/ui/button';
-import {GithubIcon, StarIcon} from 'lucide-react';
+import {ChevronRight, GithubIcon, StarIcon} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {TypeAnimation} from 'react-type-animation';
@@ -31,7 +31,7 @@ export default function Home() {
 								'impact submission.',
 								1000,
 								'control award.',
-								1000
+								1000,
 							]}
 							wrapper="span"
 							speed={30}
@@ -39,11 +39,15 @@ export default function Home() {
 						/>
 					</h1>
 					<p className="max-w-[750px] text-center text-lg text-muted-foreground sm:text-xl">
-						Award winning, beautifully designed portfolios and documentation for FTC and FRC.
+						Award winning, beautifully designed portfolios and documentation for FTC and{' '}
+						<em className="opacity-70">
+							FRC<span className="text-destructive">*</span>
+						</em>
+						.
 					</p>
 					<div className="flex w-full items-center justify-center space-x-4 py-4 md:pb-10">
 						<Link href="/dashboard">
-						<Button>Submit Yours</Button>
+							<Button>Submit Yours</Button>
 						</Link>
 						<Button variant={'outline'} className="flex space-x-2">
 							<StarIcon className="h-4 w-4" /> <p>Star the repository</p>
@@ -52,6 +56,14 @@ export default function Home() {
 				</section>
 				<div className="">
 					<HomepageCarousel />
+					<div className="flex">
+						<a href="/ftc" className="mx-auto group opacity-70 hover:opacity-100">
+							<div className="flex my-8">
+								View all...{' '}
+								<ChevronRight className="h-4 w-4 relative left-[2px] group-hover:left-[5px] my-auto transition-all" />
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 		</main>

@@ -30,6 +30,7 @@ import {fetcher} from '@/lib/fetcher';
 import type VerifyUser from '@/pages/api/admin/users/approve/[id]';
 
 import type VerifyDocument from '@/pages/api/admin/portfolios/approve';
+import type DeleteDocument from '@/pages/api/admin/portfolios/approve';
 
 import {Download, DownloadCloud, X} from 'lucide-react';
 import Link from 'next/link';
@@ -180,7 +181,30 @@ export default function AdminDashboard() {
 											<Download className="w-4 h-4 mr-4" /> Download
 										</Button>
 									</Link>
-									<Button variant={'destructive'}>
+									<Button
+										onClick={async e => {
+											e.preventDefault();
+
+											const promise = fetcher<InferAPIResponse<typeof DeleteDocument, 'POST'>>(
+												`/api/admin/portfolios/delete/${portfolio.id}`,
+												{
+													method: 'GET',
+													headers: {'Content-Type': 'application/json'},
+												},
+											);
+
+											const res = await toast
+												.promise(promise, {
+													success: 'Deleted!',
+													loading: 'Deleting document...',
+													error: (error: Error) => error?.message ?? 'Something went wrong!',
+												})
+												.catch(() => null);
+
+											if (!res) return;
+										}}
+										variant={'destructive'}
+									>
 										<X className="w-4 h-4 mr-4" /> Reject
 									</Button>
 								</CardFooter>
