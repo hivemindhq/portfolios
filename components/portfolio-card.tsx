@@ -14,11 +14,13 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 					</span>
 					<div className="flex space-x-4">
 						<Link href={portfolio.s3_url ? portfolio.s3_url : '#'} target="_blank">
-							<Button variant={'outline'}>Open</Button>
+							<Button variant={'outline'}>View</Button>
 						</Link>
 					</div>
 				</div>
-				<a
+				<Link
+                    href={portfolio.s3_url ? portfolio.s3_url : '#'}
+                    target="_blank"
 					className="group relative flex bg-secondary grow rounded-2xl"
 					aria-label={`FTC ${portfolio.team_number} ${portfolio.team_name}'s Portfolio`}
 				>
@@ -29,7 +31,7 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 						aria-hidden
 					/>
 					<div className="ease rounded-2xl pointer-events-none absolute inset-0 transition duration-150 group-hover:bg-black/20"></div>
-				</a>
+				</Link>
 				<h1 className="truncate font-medium">
 					{portfolio.team_name} &bull; {portfolio.division}
 				</h1>
