@@ -37,7 +37,7 @@ export default function Page() {
 									<></>
 								) : (
 									portfolios.map(portfolio => (
-										<Link href={`/dashboard/document/${portfolio.id}`}>
+										<Link href={`/dashboard/document/${portfolio.id}`} key={portfolio.id}>
 											<DashboardDocument
 												key={portfolio.id}
 												id={`${portfolio.id}`}
