@@ -34,6 +34,7 @@ export default function HomepageCarousel() {
 											<div className="flex aspect-square items-center justify-center group">
 												<span className="text-4xl font-semibold">
 													<img
+														alt="Thumbnail"
 														className="rounded-2xl rotate-[-5deg] max-w-[20rem] ease-out duration-300 transition-all group-hover:rotate-[5deg] shadow-lg max-h-[20rem]"
 														src={portfolio.s3_url_thumb ? portfolio.s3_url_thumb : ''}
 													></img>

@@ -11,6 +11,7 @@ export default function Footer() {
 							<p className="ms-auto my-auto">
 								&copy; 2023-{new Date().getFullYear()}{' '}
 								<a
+									rel="noopener"
 									href="https://hivemindrobotics.net/"
 									className="underline hover:opacity-70 transition-all"
 									target="_blank"
