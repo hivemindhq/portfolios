@@ -42,7 +42,11 @@ export default function Page() {
 										</div>
 									</div>
 								) : (
-									portfolios.map(portfolio => <PortfolioCard portfolio={portfolio} />)
+									portfolios.map(portfolio => (
+										<div key={portfolio.id}>
+											<PortfolioCard portfolio={portfolio} />
+										</div>
+									))
 								)}
 							</>
 						)}
