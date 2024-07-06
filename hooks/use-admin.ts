@@ -2,6 +2,7 @@ import useSWR from 'swr';
 
 import type UnapprovedPortfoliosResponse from '@/pages/api/admin/portfolios/index';
 import type UnverifiedUsers from '@/pages/api/admin/users/index';
+import type Reports from '@/pages/api/admin/reports';
 
 import {InferAPIResponse} from 'nextkit';
 import {NextkitClientException} from 'nextkit/client';
@@ -21,6 +22,15 @@ export function getUnverifiedUsers() {
 		InferAPIResponse<typeof UnverifiedUsers, 'GET'> | null,
 		NextkitClientException
 	>('/api/admin/users', fetcher);
+
+	return swr;
+}
+
+export function getReports() {
+	const swr = useSWR<InferAPIResponse<typeof Reports, 'GET'> | null, NextkitClientException>(
+		'/api/admin/reports',
+		fetcher,
+	);
 
 	return swr;
 }

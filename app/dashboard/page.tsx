@@ -37,14 +37,16 @@ export default function Page() {
 									<></>
 								) : (
 									portfolios.map(portfolio => (
-										<DashboardDocument
-											key={portfolio.id}
-											id={`${portfolio.id}`}
-											title={`${portfolio.team_name} ${portfolio.season} ${portfolio.type}`}
-											season={portfolio.season}
-											s3_thumb={portfolio.s3_url_thumb ? portfolio.s3_url_thumb : null}
-											approved={portfolio.approved}
-										/>
+										<Link href={`/dashboard/document/${portfolio.id}`}>
+											<DashboardDocument
+												key={portfolio.id}
+												id={`${portfolio.id}`}
+												title={`${portfolio.team_name} ${portfolio.season} ${portfolio.type}`}
+												season={portfolio.season}
+												s3_thumb={portfolio.s3_url_thumb ? portfolio.s3_url_thumb : null}
+												approved={portfolio.approved}
+											/>
+										</Link>
 									))
 								)}
 							</>

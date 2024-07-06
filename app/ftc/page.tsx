@@ -12,6 +12,9 @@ import {useTimer} from 'react-timer-hook';
 import {Button} from '@/components/ui/button';
 import {Skeleton} from '@/components/ui/skeleton';
 import PortfolioCard from '@/components/portfolio-card';
+import {ToggleGroup, ToggleGroupItem} from '@/components/ui/toggle-group';
+import {Select, SelectContent, SelectItem, SelectTrigger} from '@/components/ui/select';
+import {SelectValue} from '@radix-ui/react-select';
 
 const cardContainer: Variants = {
 	hidden: {
@@ -50,6 +53,8 @@ export default function FTCPage() {
 	const {data: user, mutate} = useMe();
 	const [loading, setIsLoading] = useState(true);
 	const [random, setRandom] = useState(0);
+	const [division, setDivision] = useState('');
+	const [filter, setFilter] = useState('');
 
 	useEffect(() => {
 		if (!portfolios) {
@@ -185,12 +190,84 @@ export default function FTCPage() {
 				{loading ? (
 					<Skeleton className="grow flex h-[25rem] w-full my-4"></Skeleton>
 				) : (
-					<div className="my-4 grid grow grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-						{portfolios?.map(portfolio => (
-							<div key={portfolio.id} className="flex">
-								<PortfolioCard portfolio={portfolio} />
-							</div>
-						))}
+					<div>
+						<div className="grid-cols-1 md:grid-cols-2 hidden md:grid my-4">
+							<ToggleGroup type="single" className="me-auto" onValueChange={e => setFilter(e)}>
+								<ToggleGroupItem value="inspire">Inspire</ToggleGroupItem>
+								<ToggleGroupItem value="think">Think</ToggleGroupItem>
+								<ToggleGroupItem value="connect">Connect</ToggleGroupItem>
+								<ToggleGroupItem value="innovate">Innovate</ToggleGroupItem>
+								<ToggleGroupItem value="control">Control</ToggleGroupItem>
+								<ToggleGroupItem value="motivate">Motivate</ToggleGroupItem>
+								<ToggleGroupItem value="design">Design</ToggleGroupItem>
+							</ToggleGroup>
+							<Select onValueChange={e => setDivision(e)}>
+								<SelectTrigger className="w-[180px] ms-auto">
+									<SelectValue placeholder="Division" />
+								</SelectTrigger>
+								<SelectContent>
+									<SelectItem value="worlds">Worlds</SelectItem>
+									<SelectItem value="regionals">Regionals</SelectItem>
+									<SelectItem value="qualifier">Qualifier</SelectItem>
+									<SelectItem value="all">All</SelectItem>
+								</SelectContent>
+							</Select>
+						</div>
+
+						<div className="my-4 grid grow grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+							{division == '' && filter == '' ? (
+								portfolios?.map(portfolio => (
+									<div key={portfolio.id} className="flex">
+										<PortfolioCard portfolio={portfolio} />
+									</div>
+								))
+							) : (
+								<>
+									{division == '' || !division ? (
+										portfolios?.map(portfolio => {
+											if (portfolio.award.toLowerCase() == filter) {
+												return (
+													<div key={portfolio.id} className="flex">
+														<PortfolioCard portfolio={portfolio} />
+													</div>
+												);
+											} else {
+												return <></>;
+											}
+										})
+									) : (
+										<>
+											{filter == '' && !filter
+												? portfolios?.map(portfolio => {
+														if (portfolio.division.toLowerCase() == division || division == 'all') {
+															return (
+																<div key={portfolio.id} className="flex">
+																	<PortfolioCard portfolio={portfolio} />
+																</div>
+															);
+														} else {
+															return <></>;
+														}
+													})
+												: portfolios?.map(portfolio => {
+														if (
+															(portfolio.division.toLowerCase() == division || division == 'all') &&
+															portfolio.award.toLowerCase() == filter
+														) {
+															return (
+																<div key={portfolio.id} className="flex">
+																	<PortfolioCard portfolio={portfolio} />
+																</div>
+															);
+														} else {
+															return <></>;
+														}
+													})}
+										</>
+									)}
+								</>
+							)}
+						</div>
 					</div>
 				)}
 			</div>

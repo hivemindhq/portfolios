@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/dialog';
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
-import {getUnapprovedPortfolios, getUnverifiedUsers} from '@/hooks/use-admin';
+import {getReports, getUnapprovedPortfolios, getUnverifiedUsers} from '@/hooks/use-admin';
 import {useMe} from '@/hooks/use-user';
 import {fetcher} from '@/lib/fetcher';
 
@@ -32,7 +32,7 @@ import type VerifyUser from '@/pages/api/admin/users/approve/[id]';
 import type VerifyDocument from '@/pages/api/admin/portfolios/approve';
 import type DeleteDocument from '@/pages/api/admin/portfolios/approve';
 
-import {Download, DownloadCloud, X} from 'lucide-react';
+import {Check, Download, DownloadCloud, X} from 'lucide-react';
 import Link from 'next/link';
 import {InferAPIResponse} from 'nextkit';
 import toast from 'react-hot-toast';
@@ -41,6 +41,7 @@ export default function AdminDashboard() {
 	const {data: user, mutate} = useMe();
 	const {data: unapprovedPortfolios} = getUnapprovedPortfolios();
 	const {data: unverifiedUsers} = getUnverifiedUsers();
+	const {data: reports} = getReports();
 
 	return (
 		<>
@@ -206,6 +207,47 @@ export default function AdminDashboard() {
 										variant={'destructive'}
 									>
 										<X className="w-4 h-4 mr-4" /> Reject
+									</Button>
+								</CardFooter>
+							</Card>
+						))}
+					</div>
+					<h1 className="text-2xl font-semibold">Requests/Reports</h1>
+					<div className="grid grid-cols-3 gap-4">
+						{reports?.map(report => (
+							<Card key={report.id}>
+								<CardHeader>
+									<CardTitle>ID: {report.id}</CardTitle>
+									<CardDescription>
+										{report.content} by user with an id of {report.userId}
+									</CardDescription>
+								</CardHeader>
+								<CardFooter className="space-x-2">
+									<Button
+										onClick={async e => {
+											e.preventDefault();
+
+											const promise = fetcher<InferAPIResponse<typeof DeleteDocument, 'POST'>>(
+												`/api/admin/resolve/${report.id}`,
+												{
+													method: 'GET',
+													headers: {'Content-Type': 'application/json'},
+												},
+											);
+
+											const res = await toast
+												.promise(promise, {
+													success: 'Resolved!',
+													loading: 'Resolving report...',
+													error: (error: Error) => error?.message ?? 'Something went wrong!',
+												})
+												.catch(() => null);
+
+											if (!res) return;
+										}}
+										variant={'secondary'}
+									>
+										<Check className="w-4 h-4 mr-4" /> Resolve
 									</Button>
 								</CardFooter>
 							</Card>

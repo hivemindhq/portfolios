@@ -13,7 +13,11 @@ export default function DashboardDocument(props: {
 		<Card className="lg:w-[18rem] bg-secondary lg:h-[24rem] w-[9rem] overflow-hidden h-[12rem] flex hover:opacity-60 transition-all hover:scale-[0.95]">
 			<div className="flex grow items-center justify-center">
 				{props.s3_thumb != null ? (
-					<img src={props.s3_thumb} className="rotate-[-5deg] rounded-2xl shadow" />
+					<img
+						alt="Portfolio Thumbnail"
+						src={props.s3_thumb}
+						className="rotate-[-5deg] rounded-2xl shadow"
+					/>
 				) : (
 					<div className="grow text-center">
 						<Loader2 className="animate-spin mx-auto"></Loader2>

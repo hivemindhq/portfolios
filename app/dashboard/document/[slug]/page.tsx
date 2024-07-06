@@ -30,6 +30,21 @@ import {Portfolio} from '@prisma/client';
 import {ChevronLeft, PlusCircle, Upload} from 'lucide-react';
 import {useEffect, useState} from 'react';
 import Image from 'next/image';
+import {
+	Dialog,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+	DialogDescription,
+	DialogFooter,
+	DialogClose,
+} from '@/components/ui/dialog';
+import Link from 'next/link';
+import {fetcher} from '@/lib/fetcher';
+import {InferAPIResponse} from 'nextkit';
+import type Report from '@/pages/api/report';
+import toast from 'react-hot-toast';
 
 export default function Page({params: {slug}}: {params: {slug: number}}) {
 	const {data: user} = useMe();
@@ -45,10 +60,12 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 							<main className="my-4 grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
 								<div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
 									<div className="flex items-center gap-4">
-										<Button variant="outline" size="icon" className="h-7 w-7">
-											<ChevronLeft className="h-4 w-4" />
-											<span className="sr-only">Back</span>
-										</Button>
+										<Link href="/dashboard">
+											<Button variant="outline" size="icon" className="h-7 w-7">
+												<ChevronLeft className="h-4 w-4" />
+												<span className="sr-only">Back</span>
+											</Button>
+										</Link>
 										<h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
 											{portfolio.portfolio.team_name} {portfolio.portfolio.season}{' '}
 											{portfolio.portfolio.type}
@@ -67,8 +84,8 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 													<CardDescription>
 														<div className="space-y-2 my-3">
 															<p>
-																Request details for this portfolio so that you can use it in your
-																future documents for your outreach.
+																Request details for this portfolio so that you can use it your
+																outreach for future seasons.
 															</p>
 															<p>
 																We'll reach out to you with the email address you have attached to
@@ -78,14 +95,42 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 													</CardDescription>
 												</CardHeader>
 												<CardContent>
-													<Button>Request Data</Button>
+													<Button
+														onClick={async e => {
+															e.preventDefault();
+
+															const data = {
+																content: `Dashboard Analytics/Data Request: ${portfolio.portfolio.team_name} ${portfolio.portfolio.team_number} ${portfolio.portfolio.season} ${portfolio.portfolio.type}`,
+															};
+
+															const promise = fetcher<InferAPIResponse<typeof Report, 'POST'>>(
+																'/api/report',
+																{
+																	method: 'POST',
+																	headers: {'Content-Type': 'application/json'},
+																	body: JSON.stringify(data),
+																},
+															);
+
+															const res = await toast
+																.promise(promise, {
+																	success: 'Success!',
+																	loading: 'Creating a data request...',
+																	error: (error: Error) =>
+																		error?.message ?? 'Something went wrong!',
+																})
+																.catch(() => null);
+														}}
+													>
+														Request Data
+													</Button>
 												</CardContent>
 											</Card>
 										</div>
 										<div className="grid auto-rows-max items-start gap-4 lg:gap-8">
 											<Card className="overflow-hidden" x-chunk="dashboard-07-chunk-4">
 												<CardContent>
-													<div className="grid gap-2">
+													<div className="grid mt-5">
 														<img
 															alt="Product image"
 															className="w-full rounded-md object-cover"
@@ -111,9 +156,57 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 												</CardHeader>
 												<CardContent>
 													<div></div>
-													<Button size="sm" variant="destructive">
-														Delete Document
-													</Button>
+													<Dialog>
+														<DialogTrigger>
+															<Button size="sm" variant="destructive">
+																Delete Document
+															</Button>
+														</DialogTrigger>
+														<DialogContent>
+															<form
+																className="my-4 space-y-4"
+																onSubmit={async e => {
+																	e.preventDefault();
+
+																	const data = {
+																		content: `Dashboard Deletion Request: ${portfolio.portfolio.team_name} ${portfolio.portfolio.team_number} ${portfolio.portfolio.season} ${portfolio.portfolio.type}`,
+																	};
+
+																	const promise = fetcher<InferAPIResponse<typeof Report, 'POST'>>(
+																		'/api/report',
+																		{
+																			method: 'POST',
+																			headers: {'Content-Type': 'application/json'},
+																			body: JSON.stringify(data),
+																		},
+																	);
+
+																	const res = await toast
+																		.promise(promise, {
+																			success: 'Success!',
+																			loading: 'Creating a deletion request...',
+																			error: (error: Error) =>
+																				error?.message ?? 'Something went wrong!',
+																		})
+																		.catch(() => null);
+																}}
+															>
+																<DialogHeader>
+																	<DialogTitle>Are you sure?</DialogTitle>
+																	<DialogDescription>
+																		This action is irreversible.
+																	</DialogDescription>
+																</DialogHeader>
+																<DialogFooter>
+																	<DialogClose>
+																		<Button type="submit" className="ms-auto">
+																			Okay!
+																		</Button>
+																	</DialogClose>
+																</DialogFooter>
+															</form>
+														</DialogContent>
+													</Dialog>
 												</CardContent>
 											</Card>
 										</div>

@@ -15,6 +15,16 @@ export default api({
 
 		const body = schema.parse(req.body);
 
-		// const report = await prisma.report.create({})
+		const report = await prisma.report.create({
+			data: {
+				userId: Number(context.userId),
+				content: body.content,
+				confirmed: false,
+			},
+		});
+
+		return {
+			success: true,
+		};
 	},
 });
