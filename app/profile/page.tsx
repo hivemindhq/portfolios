@@ -21,9 +21,9 @@ import {Input} from '@/components/ui/input';
 import {Checkbox} from '@/components/ui/checkbox';
 import {Alert, AlertDescription, AlertTitle} from '@/components/ui/alert';
 
-import type NameRequest from '@/pages/api/users/name'
-import { InferAPIResponse } from 'nextkit';
-import { fetcher } from '@/lib/fetcher';
+import type NameRequest from '@/pages/api/users/name';
+import {InferAPIResponse} from 'nextkit';
+import {fetcher} from '@/lib/fetcher';
 import AuthPreloader from '@/components/preloader';
 
 export default function UserSettingsPage() {
@@ -42,7 +42,7 @@ export default function UserSettingsPage() {
 
 	return (
 		<>
-			<AuthPreloader/>
+			<AuthPreloader />
 			<main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
 				<div className="mx-auto grid w-full max-w-6xl gap-2">
 					<h1 className="text-3xl font-semibold">Settings</h1>
@@ -89,7 +89,7 @@ export default function UserSettingsPage() {
 								<CardDescription>Select your preffered name.</CardDescription>
 							</CardHeader>
 							<form
-								onSubmit={async (e) => {
+								onSubmit={async e => {
 									e.preventDefault();
 
 									const values = Object.fromEntries(
@@ -106,13 +106,13 @@ export default function UserSettingsPage() {
 									);
 
 									const res = await toast
-									.promise(promise, {
-										success: 'Success!',
-										loading: 'Changing your name...',
-										error: (error: Error) => error?.message ?? 'Something went wrong!',
-									})
-									.catch(() => null);
-									
+										.promise(promise, {
+											success: 'Success!',
+											loading: 'Changing your name...',
+											error: (error: Error) => error?.message ?? 'Something went wrong!',
+										})
+										.catch(() => null);
+
 									if (!res) {
 										return;
 									}

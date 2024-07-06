@@ -1,33 +1,33 @@
-"use client";
+'use client';
 
-import AuthPreloader from "@/components/preloader";
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
-import {Progress} from "@/components/ui/progress";
-import {fetcher} from "@/lib/fetcher";
-import {InferAPIResponse} from "nextkit";
-import {useState} from "react";
+import AuthPreloader from '@/components/preloader';
+import {Button} from '@/components/ui/button';
+import {Input} from '@/components/ui/input';
+import {Progress} from '@/components/ui/progress';
+import {fetcher} from '@/lib/fetcher';
+import {InferAPIResponse} from 'nextkit';
+import {useState} from 'react';
 
-import type AddDocument from "@/pages/api/dashboard/add";
-import toast from "react-hot-toast";
-import {useRouter} from "next/navigation";
-import {useMe} from "@/hooks/use-user";
+import type AddDocument from '@/pages/api/dashboard/add';
+import toast from 'react-hot-toast';
+import {useRouter} from 'next/navigation';
+import {useMe} from '@/hooks/use-user';
 
 export default function NewDocFlow() {
 	const {data: user} = useMe();
 	const [percent, setPercent] = useState(1);
 	const [slide, setSlide] = useState(1);
 	const [formData, setFormData] = useState({
-		teamName: "",
-		teamNumber: "",
-		teamProgram: "",
-		type: "",
-		season: "",
-		downloadLink: "",
-		award: "",
-		awardRanking: "",
-		division: "",
-		state: "",
+		teamName: '',
+		teamNumber: '',
+		teamProgram: '',
+		type: '',
+		season: '',
+		downloadLink: '',
+		award: '',
+		awardRanking: '',
+		division: '',
+		state: '',
 	});
 	const router = useRouter();
 
@@ -49,17 +49,32 @@ export default function NewDocFlow() {
 	const handleSubmit = async e => {
 		e.preventDefault();
 
-		const promise = fetcher<InferAPIResponse<typeof AddDocument, "POST">>("/api/dashboard/add", {
-			method: "POST",
-			headers: {"Content-Type": "application/json"},
+		if (
+			formData.teamName == '' ||
+			formData.teamNumber == '' ||
+			formData.teamProgram == '' ||
+			formData.type == '' ||
+			formData.season == '' ||
+			formData.downloadLink == '' ||
+			formData.award == '' ||
+			formData.awardRanking == '' ||
+			formData.division == '' ||
+			formData.state == ''
+		) {
+			return;
+		}
+
+		const promise = fetcher<InferAPIResponse<typeof AddDocument, 'POST'>>('/api/dashboard/add', {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(formData),
 		});
 
 		const res = await toast
 			.promise(promise, {
-				success: "Success!",
-				loading: "Submitting...",
-				error: (error: Error) => error?.message ?? "Something went wrong!",
+				success: 'Success!',
+				loading: 'Submitting...',
+				error: (error: Error) => error?.message ?? 'Something went wrong!',
 			})
 			.catch(() => null);
 
@@ -67,7 +82,7 @@ export default function NewDocFlow() {
 			return;
 		}
 
-		router.push("/dashboard");
+		router.push('/dashboard');
 	};
 
 	return (
@@ -246,7 +261,8 @@ export default function NewDocFlow() {
 						<div className="m-auto text-center space-y-4">
 							<h1 className="text-2xl font-semibold">403</h1>
 							<p>
-								Your account is not verified, you can still favorite documents but you cannot yet submit new ones.
+								Your account is not verified, you can still favorite documents but you cannot yet
+								submit new ones.
 							</p>
 						</div>
 					</>

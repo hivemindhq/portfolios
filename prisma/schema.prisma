@@ -10,12 +10,12 @@ datasource db {
 }
 
 model User {
-  id                   Int     @id @default(autoincrement())
-  email                String  @unique
+  id                   Int         @id @default(autoincrement())
+  email                String      @unique
   name                 String
   team                 String
   password             String
-  verified             Boolean @default(false)
+  verified             Boolean     @default(false)
   site_admin           Boolean
   profile_picture      String?
   owned_portfolios     Portfolio[]
@@ -30,7 +30,7 @@ model Report {
 }
 
 model Portfolio {
-  id            Int    @id @default(autoincrement())
+  id            Int     @id @default(autoincrement())
   team_name     String
   team_number   String
   season        String

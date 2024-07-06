@@ -301,7 +301,8 @@ export default function PrivacyPolicy() {
 					<h3 className="text-md font-bold pb-2">Amazon Web Services</h3>
 					<p className="opacity-70">Amazon Web Services is provided by Amazon.com, Inc.</p>
 					<p className="opacity-70">
-						We use Amazon Web Services to store images, and other files that we need to serve to you.
+						We use Amazon Web Services to store images, and other files that we need to serve to
+						you.
 					</p>
 
 					<h2 className="text-xl font-bold py-4">Analytics</h2>
@@ -371,6 +372,7 @@ export default function PrivacyPolicy() {
 						or by using the contact form on our{' '}
 						<a
 							target="_blank"
+							rel="noopener"
 							href="https://hivemindrobotics.net/team#contact"
 							className="underline hover:opacity-70 transition-all"
 						>

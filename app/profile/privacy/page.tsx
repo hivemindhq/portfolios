@@ -19,11 +19,11 @@ import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Alert, AlertDescription, AlertTitle} from '@/components/ui/alert';
 
-import type EmailRequest from '@/pages/api/users/email'
-import type NumberRequest from '@/pages/api/users/team/number'
+import type EmailRequest from '@/pages/api/users/email';
+import type NumberRequest from '@/pages/api/users/team/number';
 
-import { InferAPIResponse } from 'nextkit';
-import { fetcher } from '@/lib/fetcher';
+import {InferAPIResponse} from 'nextkit';
+import {fetcher} from '@/lib/fetcher';
 import AuthPreloader from '@/components/preloader';
 
 export default function UserSettingsPage() {
@@ -42,17 +42,17 @@ export default function UserSettingsPage() {
 
 	return (
 		<>
-			<AuthPreloader/>
+			<AuthPreloader />
 			<main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
 				<div className="mx-auto grid w-full max-w-6xl gap-2">
 					<h1 className="text-3xl font-semibold">Settings</h1>
 				</div>
 				<div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
 					<nav className="grid gap-4 text-sm text-muted-foreground" x-chunk="dashboard-04-chunk-0">
-						<Link href="/profile">
-							General
+						<Link href="/profile">General</Link>
+						<Link href="/profile/privacy" className="font-semibold text-primary">
+							Privacy
 						</Link>
-						<Link href="/profile/privacy" className="font-semibold text-primary">Privacy</Link>
 					</nav>
 					<div className="grid gap-6">
 						{user?.verified ? (
@@ -71,7 +71,7 @@ export default function UserSettingsPage() {
 								<CardDescription>Set your email address.</CardDescription>
 							</CardHeader>
 							<form
-								onSubmit={async (e) => {
+								onSubmit={async e => {
 									e.preventDefault();
 
 									const values = Object.fromEntries(
@@ -88,13 +88,13 @@ export default function UserSettingsPage() {
 									);
 
 									const res = await toast
-									.promise(promise, {
-										success: 'Success!',
-										loading: 'Changing your email...',
-										error: (error: Error) => error?.message ?? 'Something went wrong!',
-									})
-									.catch(() => null);
-									
+										.promise(promise, {
+											success: 'Success!',
+											loading: 'Changing your email...',
+											error: (error: Error) => error?.message ?? 'Something went wrong!',
+										})
+										.catch(() => null);
+
 									if (!res) {
 										return;
 									}
@@ -110,13 +110,13 @@ export default function UserSettingsPage() {
 								</CardFooter>
 							</form>
 						</Card>
-                        <Card>
+						<Card>
 							<CardHeader>
 								<CardTitle>Team Number</CardTitle>
 								<CardDescription>Set your team number.</CardDescription>
 							</CardHeader>
 							<form
-								onSubmit={async (e) => {
+								onSubmit={async e => {
 									e.preventDefault();
 
 									const values = Object.fromEntries(
@@ -133,13 +133,13 @@ export default function UserSettingsPage() {
 									);
 
 									const res = await toast
-									.promise(promise, {
-										success: 'Success!',
-										loading: 'Changing your email...',
-										error: (error: Error) => error?.message ?? 'Something went wrong!',
-									})
-									.catch(() => null);
-									
+										.promise(promise, {
+											success: 'Success!',
+											loading: 'Changing your email...',
+											error: (error: Error) => error?.message ?? 'Something went wrong!',
+										})
+										.catch(() => null);
+
 									if (!res) {
 										return;
 									}

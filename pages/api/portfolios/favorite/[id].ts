@@ -1,6 +1,6 @@
 import {prisma} from '@/lib/util/db';
 import {api} from '@/server/api';
-import { Portfolio } from '@prisma/client';
+import {Portfolio} from '@prisma/client';
 import {NextkitException} from 'nextkit';
 
 export default api({
@@ -15,40 +15,37 @@ export default api({
 			},
 		});
 
-        if (!user) {
-            throw new NextkitException(
-              401,
-              "You must be logged in to access this endpoint"
-            );
-        }
+		if (!user) {
+			throw new NextkitException(401, 'You must be logged in to access this endpoint');
+		}
 
-        const id = Number(req.query.id);
+		const id = Number(req.query.id);
 
 		if (isNaN(id)) {
 			throw new NextkitException(400, 'Invalid ID');
 		}
 
-        let portfolios: number[] = [];
+		let portfolios: number[] = [];
 
-        await Promise.all(
-            user.favorited_portfolios.map(async (portfolio) => {
-                portfolios.push(portfolio);
-            })
-        )
+		await Promise.all(
+			user.favorited_portfolios.map(async portfolio => {
+				portfolios.push(portfolio);
+			}),
+		);
 
-        await portfolios.push(id);
+		await portfolios.push(id);
 
-        await prisma.user.update({
-            where: {
-                id: user.id
-            },
-            data: {
-                favorited_portfolios: portfolios
-            }
-        })
+		await prisma.user.update({
+			where: {
+				id: user.id,
+			},
+			data: {
+				favorited_portfolios: portfolios,
+			},
+		});
 
-        return {
-            success: true
-        }
+		return {
+			success: true,
+		};
 	},
 });

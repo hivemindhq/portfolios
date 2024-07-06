@@ -14,34 +14,28 @@ export default api({
 			},
 		});
 
-        if (!user) {
-            throw new NextkitException(
-              401,
-              "You must be logged in to access this endpoint"
-            );
-        }
+		if (!user) {
+			throw new NextkitException(401, 'You must be logged in to access this endpoint');
+		}
 
-        if (!user.site_admin) {
-            throw new NextkitException(
-                403,
-                "You don't have permission to access this endpoint"
-            )
-        }
+		if (!user.site_admin) {
+			throw new NextkitException(403, "You don't have permission to access this endpoint");
+		}
 
-        const id = Number(req.query.id);
+		const id = Number(req.query.id);
 
 		if (isNaN(id)) {
 			throw new NextkitException(400, 'Invalid ID');
 		}
 
-        await prisma.portfolio.delete({
-            where: {
-                id: id
-            }
-        })
+		await prisma.portfolio.delete({
+			where: {
+				id: id,
+			},
+		});
 
-        return {
-            success: true
-        }
+		return {
+			success: true,
+		};
 	},
 });

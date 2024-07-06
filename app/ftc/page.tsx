@@ -8,9 +8,9 @@ import {Card} from '@/components/ui/card';
 import {useEffect, useState} from 'react';
 import {AnimatePresence, Variants, motion} from 'framer-motion';
 import {Loader2, Smile} from 'lucide-react';
-import { useTimer } from 'react-timer-hook';
-import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
+import {useTimer} from 'react-timer-hook';
+import {Button} from '@/components/ui/button';
+import {Skeleton} from '@/components/ui/skeleton';
 import PortfolioCard from '@/components/portfolio-card';
 
 const cardContainer: Variants = {
@@ -31,10 +31,10 @@ const cardContainer: Variants = {
 			staggerChildren: 0.1,
 		},
 	},
-}
+};
 
 const fadeFromSide: Variants = {
-	hidden: { x: -25, opacity: 0 },
+	hidden: {x: -25, opacity: 0},
 	visible: {
 		x: 0,
 		opacity: 1,
@@ -43,8 +43,7 @@ const fadeFromSide: Variants = {
 			duration: 0.5,
 		},
 	},
-}
-
+};
 
 export default function FTCPage() {
 	const {data: portfolios} = getFTCDocuments();
@@ -101,57 +100,100 @@ export default function FTCPage() {
 								</motion.div>
 							)}
 						</AnimatePresence>
-						{loading ? <></> : <>
-							<AnimatePresence>
-								{(!loading && load && portfolios != null) && (
-									<motion.div
-										className="grow h-[20rem] flex"
-										initial={{opacity: 0, y: 100}}
-										animate={{opacity: 1, y: 0}}
-										exit={{opacity: 0, scale: 0.8}}
-										transition={{
-											duration:1.5,
-											ease: 'easeInOut',
-										}}
-									>
-										<div className='grid grid-cols-1 lg:grid-cols-2 gap-4 grow'>
-											<div className='flex'>
-												<motion.div initial="hidden" animate="visible" variants={cardContainer} className='my-auto ps-[6rem] md:ps-[12rem] space-y-2'>
-													<motion.h1 initial="hidden" animate="visible" variants={fadeFromSide} className='font-bold text-2xl'>{portfolios[random].team_name}</motion.h1>
-													<motion.p initial="hidden" animate="visible" variants={fadeFromSide} className='text-lg'>{portfolios[random].season} {portfolios[random].type}</motion.p>
-													<motion.p initial="hidden" animate="visible" variants={fadeFromSide} className='opacity-70'>Won {portfolios[random].award} {portfolios[random].award_ranking} at {portfolios[random].division}</motion.p>
-													{ /* @ts-ignore */ } 
-													<motion.a initial="hidden" animate="visible" variants={fadeFromSide} href={portfolios[random].s3_url ? portfolios[random].s3_url : ''}>
-														<Button className='my-4'>
-															View
-														</Button>
-													</motion.a>
-												</motion.div>
-											</div>
-											<div className='hidden md:flex'>
-												<div className='m-auto flex grow'>
-													{ /* @ts-ignore */}
-													<img src={portfolios[random].s3_url_thumb ? portfolios[random].s3_url_thumb : ""} className='h-[20rem] relative m-auto bottom-[-2.5rem] rotate-[5deg] rounded-md shadow-lg'/>
+						{loading ? (
+							<></>
+						) : (
+							<>
+								<AnimatePresence>
+									{!loading && load && portfolios != null && (
+										<motion.div
+											className="grow h-[20rem] flex"
+											initial={{opacity: 0, y: 100}}
+											animate={{opacity: 1, y: 0}}
+											exit={{opacity: 0, scale: 0.8}}
+											transition={{
+												duration: 1.5,
+												ease: 'easeInOut',
+											}}
+										>
+											<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 grow">
+												<div className="flex">
+													<motion.div
+														initial="hidden"
+														animate="visible"
+														variants={cardContainer}
+														className="my-auto ps-[6rem] md:ps-[12rem] space-y-2"
+													>
+														<motion.h1
+															initial="hidden"
+															animate="visible"
+															variants={fadeFromSide}
+															className="font-bold text-2xl"
+														>
+															{portfolios[random].team_name}
+														</motion.h1>
+														<motion.p
+															initial="hidden"
+															animate="visible"
+															variants={fadeFromSide}
+															className="text-lg"
+														>
+															{portfolios[random].season} {portfolios[random].type}
+														</motion.p>
+														<motion.p
+															initial="hidden"
+															animate="visible"
+															variants={fadeFromSide}
+															className="opacity-70"
+														>
+															Won {portfolios[random].award} {portfolios[random].award_ranking} at{' '}
+															{portfolios[random].division}
+														</motion.p>
+														<motion.a
+															initial="hidden"
+															animate="visible"
+															variants={fadeFromSide}
+															// @ts-ignore
+															href={portfolios[random].s3_url ? portfolios[random].s3_url : ''}
+														>
+															<Button className="my-4">View</Button>
+														</motion.a>
+													</motion.div>
+												</div>
+												<div className="hidden md:flex">
+													<div className="m-auto flex grow">
+														<img
+															// @ts-ignore
+															src={
+																portfolios[random].s3_url_thumb
+																	? portfolios[random].s3_url_thumb
+																	: ''
+															}
+															alt="Random Portfolio"
+															className="h-[20rem] relative m-auto bottom-[-2.5rem] rotate-[5deg] rounded-md shadow-lg"
+														/>
+													</div>
 												</div>
 											</div>
-										</div>
-									</motion.div>
-								)}
-							</AnimatePresence>
-						</>}
+										</motion.div>
+									)}
+								</AnimatePresence>
+							</>
+						)}
 					</div>
 				</Card>
-				{loading ? <Skeleton className='grow flex h-[25rem] w-full my-4'></Skeleton> : 
-				<div className='my-4 grid grow grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-					{portfolios?.map((portfolio) => (
-						<div key={portfolio.id} className='flex'>
-							<PortfolioCard portfolio={portfolio}/>
-						</div>
-					))}
-				</div>
-				}
+				{loading ? (
+					<Skeleton className="grow flex h-[25rem] w-full my-4"></Skeleton>
+				) : (
+					<div className="my-4 grid grow grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+						{portfolios?.map(portfolio => (
+							<div key={portfolio.id} className="flex">
+								<PortfolioCard portfolio={portfolio} />
+							</div>
+						))}
+					</div>
+				)}
 			</div>
-			
 		</div>
 	);
 }

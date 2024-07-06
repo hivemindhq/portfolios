@@ -1,6 +1,6 @@
-import { profileFileRouter } from "@/server/pic/uploadthing";
-import { createRouteHandler } from "uploadthing/next-legacy";
+import {profileFileRouter} from '@/server/pic/uploadthing';
+import {createRouteHandler} from 'uploadthing/next-legacy';
 
 export default createRouteHandler({
-    router: profileFileRouter
-})
+	router: profileFileRouter,
+});

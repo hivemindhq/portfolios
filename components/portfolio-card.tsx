@@ -19,8 +19,8 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 					</div>
 				</div>
 				<Link
-                    href={portfolio.s3_url ? portfolio.s3_url : '#'}
-                    target="_blank"
+					href={portfolio.s3_url ? portfolio.s3_url : '#'}
+					target="_blank"
 					className="group relative flex bg-secondary grow rounded-2xl"
 					aria-label={`FTC ${portfolio.team_number} ${portfolio.team_name}'s Portfolio`}
 				>
