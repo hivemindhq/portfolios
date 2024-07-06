@@ -25,13 +25,7 @@ export default function Navbar() {
 				>
 					FTC
 				</Link>
-				<span
-					className={cn(
-						'text-foreground/30 cursor-not-allowed'
-					)}
-				>
-					FRC
-				</span>
+				<span className={cn('text-foreground/30 cursor-not-allowed')}>FRC</span>
 			</nav>
 		</div>
 	);

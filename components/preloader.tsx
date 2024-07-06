@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { useMe } from '@/hooks/use-user';
+import {useMe} from '@/hooks/use-user';
 import {AnimatePresence, motion} from 'framer-motion';
-import { Loader2 } from 'lucide-react';
+import {Loader2} from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
-import { useTimer } from 'react-timer-hook';
+import {useState} from 'react';
+import {useTimer} from 'react-timer-hook';
 
 export default function AuthPreloader() {
 	const {data: user, mutate} = useMe();

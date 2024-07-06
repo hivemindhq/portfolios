@@ -30,10 +30,14 @@ export default function HomepageCarousel() {
 							<>
 								<CarouselItem key={portfolio.id} className="pl-1 md:basis-1/2 lg:basis-1/3">
 									<div className="p-1">
-										<div className='overflow-hidden hover:scale-[0.95] ease-out duration-300 transition-all hover:opacity-70'>
+										<div className="overflow-hidden hover:scale-[0.95] ease-out duration-300 transition-all hover:opacity-70">
 											<div className="flex aspect-square items-center justify-center group">
 												<span className="text-4xl font-semibold">
-													<img className="rounded-2xl rotate-[-5deg] max-w-[20rem] ease-out duration-300 transition-all group-hover:rotate-[5deg] shadow-lg max-h-[20rem]"src={portfolio.s3_url_thumb ? portfolio.s3_url_thumb : ''}></img>
+													<img
+														alt="Thumbnail"
+														className="rounded-2xl rotate-[-5deg] max-w-[20rem] ease-out duration-300 transition-all group-hover:rotate-[5deg] shadow-lg max-h-[20rem]"
+														src={portfolio.s3_url_thumb ? portfolio.s3_url_thumb : ''}
+													></img>
 												</span>
 											</div>
 										</div>

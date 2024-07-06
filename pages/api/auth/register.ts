@@ -33,9 +33,9 @@ export default api({
 				name: body.name,
 				password: await argon.hash(body.password),
 				team: body.team,
-				site_admin: false
-			}
-		})
+				site_admin: false,
+			},
+		});
 
 		const [token, expires] = await createSession(`${user.id}`);
 
@@ -50,7 +50,7 @@ export default api({
 		);
 
 		return {
-			user: user
-		}
+			user: user,
+		};
 	},
 });

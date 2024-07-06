@@ -19,6 +19,7 @@ import {Bookmark, LogOutIcon, ShieldIcon, Star, User} from 'lucide-react';
 import toast from 'react-hot-toast';
 import {useRouter} from 'next/navigation';
 import {fetcher} from '@/lib/fetcher';
+import MobileNavbar from './mobile-nav';
 
 export default function SiteNav() {
 	const {data: user, mutate} = useMe();
@@ -29,7 +30,10 @@ export default function SiteNav() {
 			<div className="container flex h-14 max-w-screen-2xl items-center">
 				<Navbar />
 				<div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-					<div className="">
+					<div className="flex items-center justify-center space-x-4">
+						<div className="lg:hidden block">
+							<MobileNavbar />
+						</div>
 						<ModeToggle />
 					</div>
 					{user != null ? (
@@ -54,10 +58,12 @@ export default function SiteNav() {
 											<span>Profile</span>
 										</DropdownMenuItem>
 									</Link>
-									<DropdownMenuItem>
-										<Star className="mr-2 h-4 w-4" />
-										<span>Favorites</span>
-									</DropdownMenuItem>
+									<Link href="/favorites">
+										<DropdownMenuItem>
+											<Star className="mr-2 h-4 w-4" />
+											<span>Favorites</span>
+										</DropdownMenuItem>
+									</Link>
 									<Link href="/dashboard">
 										<DropdownMenuItem>
 											<Bookmark className="mr-2 h-4 w-4" />
