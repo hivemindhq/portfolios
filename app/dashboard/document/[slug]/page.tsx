@@ -71,9 +71,13 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 											{portfolio.portfolio.type}
 										</h1>
 										{portfolio.portfolio.approved ? (
-											<Badge variant="default">Approved</Badge>
+											<Badge className="hidden md:block" variant="default">
+												Approved
+											</Badge>
 										) : (
-											<Badge variant={'destructive'}>Awaiting Approval</Badge>
+											<Badge className="hidden md:block" variant={'destructive'}>
+												Awaiting Approval
+											</Badge>
 										)}
 									</div>
 									<div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
@@ -85,7 +89,8 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 														<div className="space-y-2 my-3">
 															<p>
 																Request details for this portfolio so that you can use it your
-																outreach for future seasons.
+																outreach for future seasons,{' '}
+																<b>this feature is currently in development</b>!
 															</p>
 															<p>
 																We'll reach out to you with the email address you have attached to
@@ -96,31 +101,32 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 												</CardHeader>
 												<CardContent>
 													<Button
-														onClick={async e => {
-															e.preventDefault();
+														disabled
+														// onClick={async e => {
+														// 	e.preventDefault();
 
-															const data = {
-																content: `Dashboard Analytics/Data Request: ${portfolio.portfolio.team_name} ${portfolio.portfolio.team_number} ${portfolio.portfolio.season} ${portfolio.portfolio.type}`,
-															};
+														// 	const data = {
+														// 		content: `Dashboard Analytics/Data Request: ${portfolio.portfolio.team_name} ${portfolio.portfolio.team_number} ${portfolio.portfolio.season} ${portfolio.portfolio.type}`,
+														// 	};
 
-															const promise = fetcher<InferAPIResponse<typeof Report, 'POST'>>(
-																'/api/report',
-																{
-																	method: 'POST',
-																	headers: {'Content-Type': 'application/json'},
-																	body: JSON.stringify(data),
-																},
-															);
+														// 	const promise = fetcher<InferAPIResponse<typeof Report, 'POST'>>(
+														// 		'/api/report',
+														// 		{
+														// 			method: 'POST',
+														// 			headers: {'Content-Type': 'application/json'},
+														// 			body: JSON.stringify(data),
+														// 		},
+														// 	);
 
-															const res = await toast
-																.promise(promise, {
-																	success: 'Success!',
-																	loading: 'Creating a data request...',
-																	error: (error: Error) =>
-																		error?.message ?? 'Something went wrong!',
-																})
-																.catch(() => null);
-														}}
+														// 	const res = await toast
+														// 		.promise(promise, {
+														// 			success: 'Success!',
+														// 			loading: 'Creating a data request...',
+														// 			error: (error: Error) =>
+														// 				error?.message ?? 'Something went wrong!',
+														// 		})
+														// 		.catch(() => null);
+														// }}
 													>
 														Request Data
 													</Button>
@@ -210,12 +216,6 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 												</CardContent>
 											</Card>
 										</div>
-									</div>
-									<div className="flex items-center justify-center gap-2 md:hidden">
-										<Button variant="outline" size="sm">
-											Discard
-										</Button>
-										<Button size="sm">Save Product</Button>
 									</div>
 								</div>
 							</main>
