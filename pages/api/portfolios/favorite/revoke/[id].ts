@@ -47,7 +47,7 @@ export default api({
 		});
 
 		return {
-			success: 'hi',
+			success: true,
 		};
 	},
 });
