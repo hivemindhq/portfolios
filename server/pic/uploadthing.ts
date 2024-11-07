@@ -13,7 +13,7 @@ export const profileFileRouter = {
 
 			const pUser = await prisma.user.findFirst({
 				where: {
-					id: user,
+					id: Number(user),
 				},
 			});
 
@@ -28,7 +28,7 @@ export const profileFileRouter = {
 		.onUploadComplete(async ({metadata, file}) => {
 			const user = await prisma.user.findFirst({
 				where: {
-					id: metadata.userId,
+					id: Number(metadata.userId),
 				},
 			});
 

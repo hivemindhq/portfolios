@@ -1,13 +1,13 @@
 import {api} from '@/server/api';
 import {TokenPrefix, cookieName} from '@/server/sessions';
-import {kv} from '@vercel/kv';
 import {serialize} from 'cookie';
+import {redis} from '@/server/redis';
 
 export default api({
 	async GET({req, res}) {
 		const cookie = req.cookies[cookieName];
 
-		await kv.del(`${TokenPrefix.USER}:${cookie}`);
+		await redis.del(`${TokenPrefix.USER}:${cookie}`);
 
 		res.setHeader(
 			'Set-Cookie',
