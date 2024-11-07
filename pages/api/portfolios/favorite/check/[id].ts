@@ -15,7 +15,7 @@ export default api({
 
 		const user = await prisma.user.findFirst({
 			where: {
-				id: context.userId,
+				id: Number(context.userId),
 			},
 		});
 

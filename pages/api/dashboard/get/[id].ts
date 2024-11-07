@@ -13,7 +13,7 @@ export default api({
 		const portfolio = await prisma.portfolio.findFirst({
 			where: {
 				id: id,
-				ownerId: context.userId,
+				ownerId: Number(context.userId),
 			},
 		});
 
