@@ -120,7 +120,7 @@ export function SiteNav() {
 						<NavbarButton
 							onClick={() => setIsMobileMenuOpen(false)}
 							variant="primary"
-							className="w-full"
+							className="w-full rounded-full"
 							href="/auth"
 						>
 							Login
@@ -220,7 +220,7 @@ export function SiteNav() {
 							<NavbarButton
 								onClick={() => setIsMobileMenuOpen(false)}
 								variant="primary"
-								className="w-full"
+								className="w-full rounded-full"
 								href="/auth"
 							>
 								Login
