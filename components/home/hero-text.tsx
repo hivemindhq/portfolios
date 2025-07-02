@@ -28,11 +28,14 @@ export default function HeroText() {
 			</p> */}
 
 			<div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:space-x-4">
-				<Button className="w-full sm:w-auto">Submit Yours</Button>
+				<Link href="/dashboard">
+					<Button className="w-full sm:w-auto">Submit Yours</Button>
+				</Link>
 				<Link href="/ftc">
 					<Button className="w-full sm:w-auto" variant={'secondary'}>
 						View Collection
 					</Button>
+					/
 				</Link>
 			</div>
 
