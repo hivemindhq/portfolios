@@ -35,7 +35,6 @@ export default function HeroText() {
 					<Button className="w-full sm:w-auto" variant={'secondary'}>
 						View Collection
 					</Button>
-					/
 				</Link>
 			</div>
 
