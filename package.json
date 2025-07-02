@@ -23,6 +23,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
+    "@tabler/icons-react": "^3.34.0",
     "@types/cookie": "^0.6.0",
     "@uploadthing/react": "^6.6.0",
     "@vercel/blob": "^0.16.1",

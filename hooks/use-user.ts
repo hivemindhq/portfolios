@@ -1,6 +1,7 @@
 import useSWR from 'swr';
 
 import type UserAtMe from '@/pages/api/users/@me';
+import type Users from '@/pages/api/users/count';
 import type MyPortfolios from '@/pages/api/dashboard/all';
 
 import {InferAPIResponse} from 'nextkit';
@@ -18,4 +19,13 @@ export function useMe() {
 
 export function useMyPortfolios() {
 	return useSWR<InferAPIResponse<typeof MyPortfolios, 'GET'>>('/api/dashboard/all', fetcher);
+}
+
+export function useCount() {
+	const swr = useSWR<InferAPIResponse<typeof Users, 'GET'> | null, NextkitClientException>(
+		'/api/users/count',
+		fetcher,
+	);
+
+	return swr;
 }

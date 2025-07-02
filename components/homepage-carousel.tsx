@@ -1,13 +1,13 @@
 'use client';
 
-import {getFTCDocuments} from '@/hooks/use-portfolio';
+import {getFTCDocuments, getHomepage} from '@/hooks/use-portfolio';
 import {Card, CardContent} from './ui/card';
 import {Carousel, CarouselContent, CarouselItem} from './ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import {Skeleton} from './ui/skeleton';
 
 export default function HomepageCarousel() {
-	const {data: portfolios} = getFTCDocuments();
+	const {data: portfolios} = getHomepage();
 
 	return (
 		<div>

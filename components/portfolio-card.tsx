@@ -79,14 +79,17 @@ export default function PortfolioCard(props: {portfolio: Portfolio}) {
 				<Link
 					href={portfolio.s3_url ? portfolio.s3_url : '#'}
 					target="_blank"
-					className="group relative flex bg-secondary grow rounded-2xl"
+					className="group relative flex bg-zinc-900/20 grow rounded-2xl h-[20rem]"
 					aria-label={`FTC ${portfolio.team_number} ${portfolio.team_name}'s Portfolio`}
 				>
-					<img
+					<Image
 						src={portfolio.s3_url_thumb ? portfolio.s3_url_thumb : ''}
-						className="rounded-xl relative rounded-2xl h-[20rem] m-auto"
+						className="rounded-xl relative rounded-2xl h-[120rem] m-auto"
 						alt={`FTC ${portfolio.team_number} ${portfolio.team_name}'s Thumbnail`}
 						aria-hidden
+						layout="fill"
+						objectFit="contain"
+						loading="eager"
 					/>
 					<div className="ease rounded-2xl pointer-events-none absolute inset-0 transition duration-150 group-hover:bg-black/20"></div>
 				</Link>

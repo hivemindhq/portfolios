@@ -4,21 +4,20 @@ import {GeistSans} from 'geist/font/sans';
 import {cn} from '@/lib/utils';
 import {PHProvider} from '@/server/posthog';
 import PlausibleProvider from 'next-plausible';
-import Navbar from '@/components/navbar';
-import SiteNav from '@/components/site-nav';
 import {Toaster} from 'react-hot-toast';
 import {ThemeProvider} from '@/components/theme-provider';
-import Footer from '@/components/footer';
+import {Footer} from '@/components/footer';
 
 import localFont from 'next/font/local';
-import {Outfit} from 'next/font/google';
+import {Manrope} from 'next/font/google';
+import {SiteNav} from '@/components/navbar';
 
 export const metadata: Metadata = {
 	title: 'Portfolios',
 	description: 'A large collection of award-winning FRC and FTC documentation',
 };
 
-const fontSans = Outfit({
+const fontSans = Manrope({
 	subsets: ['latin'],
 });
 

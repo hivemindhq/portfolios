@@ -29,7 +29,7 @@ export default function AuthPage() {
 
 	return (
 		<>
-			<div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
+			<div className="w-full py-24">
 				<div className="flex items-center justify-center py-12">
 					<div className="mx-auto grid w-[350px] gap-6">
 						<div className="grid gap-2 text-center">
@@ -115,13 +115,6 @@ export default function AuthPage() {
 							</Link>
 						</div>
 					</div>
-				</div>
-				<div className="hidden bg-zinc-900 lg:flex">
-					<img
-						src="https://cdn.hivemindrobotics.net/intothedeep.gif"
-						className="h-[15rem] m-auto"
-						alt="Into the deep logo"
-					></img>
 				</div>
 			</div>
 		</>

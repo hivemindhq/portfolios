@@ -82,7 +82,7 @@ export default function FTCPage() {
 	});
 
 	return (
-		<div className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
+		<div className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
 			<div className="container mx-auto grow max-w-8xl">
 				<Card className="h-[20rem] flex grow overflow-hidden">
 					<div className="flex grow my-auto">

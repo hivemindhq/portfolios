@@ -82,74 +82,6 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 									</div>
 									<div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
 										<div className="grid my-4 auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
-											<Card x-chunk="dashboard-07-chunk-0">
-												<CardHeader>
-													<CardTitle>Request Details</CardTitle>
-													<CardDescription>
-														<div className="space-y-2 my-3">
-															<p>
-																Request details for this portfolio so that you can use it your
-																outreach for future seasons,{' '}
-																<b>this feature is currently in development</b>!
-															</p>
-															<p>
-																We'll reach out to you with the email address you have attached to
-																your account.
-															</p>
-														</div>
-													</CardDescription>
-												</CardHeader>
-												<CardContent>
-													<Button
-														disabled
-														// onClick={async e => {
-														// 	e.preventDefault();
-
-														// 	const data = {
-														// 		content: `Dashboard Analytics/Data Request: ${portfolio.portfolio.team_name} ${portfolio.portfolio.team_number} ${portfolio.portfolio.season} ${portfolio.portfolio.type}`,
-														// 	};
-
-														// 	const promise = fetcher<InferAPIResponse<typeof Report, 'POST'>>(
-														// 		'/api/report',
-														// 		{
-														// 			method: 'POST',
-														// 			headers: {'Content-Type': 'application/json'},
-														// 			body: JSON.stringify(data),
-														// 		},
-														// 	);
-
-														// 	const res = await toast
-														// 		.promise(promise, {
-														// 			success: 'Success!',
-														// 			loading: 'Creating a data request...',
-														// 			error: (error: Error) =>
-														// 				error?.message ?? 'Something went wrong!',
-														// 		})
-														// 		.catch(() => null);
-														// }}
-													>
-														Request Data
-													</Button>
-												</CardContent>
-											</Card>
-										</div>
-										<div className="grid auto-rows-max items-start gap-4 lg:gap-8">
-											<Card className="overflow-hidden" x-chunk="dashboard-07-chunk-4">
-												<CardContent>
-													<div className="grid mt-5">
-														<img
-															alt="Product image"
-															className="w-full rounded-md object-cover"
-															height="300"
-															src={
-																portfolio.portfolio.s3_url_thumb
-																	? portfolio.portfolio.s3_url_thumb
-																	: ''
-															}
-														/>
-													</div>
-												</CardContent>
-											</Card>
 											<Card x-chunk="dashboard-07-chunk-5">
 												<CardHeader>
 													<CardTitle>Delete Document</CardTitle>
@@ -198,21 +130,44 @@ export default function Page({params: {slug}}: {params: {slug: number}}) {
 																}}
 															>
 																<DialogHeader>
-																	<DialogTitle>Are you sure?</DialogTitle>
+																	<DialogTitle className="mb-4">Are you sure?</DialogTitle>
 																	<DialogDescription>
-																		This action is irreversible.
+																		This action is <strong>irreversible</strong>, and will request
+																		deletion of the document and it&apos;s associated data.
 																	</DialogDescription>
 																</DialogHeader>
 																<DialogFooter>
 																	<DialogClose>
-																		<Button type="submit" className="ms-auto">
-																			Okay!
+																		<Button
+																			type="submit"
+																			variant={'destructive'}
+																			className="ms-auto animate-pulse"
+																		>
+																			Yes, delete my document
 																		</Button>
 																	</DialogClose>
 																</DialogFooter>
 															</form>
 														</DialogContent>
 													</Dialog>
+												</CardContent>
+											</Card>
+										</div>
+										<div className="grid auto-rows-max items-start gap-4 lg:gap-8">
+											<Card className="overflow-hidden" x-chunk="dashboard-07-chunk-4">
+												<CardContent>
+													<div className="grid mt-5">
+														<img
+															alt="Product image"
+															className="w-full rounded-md object-cover"
+															height="300"
+															src={
+																portfolio.portfolio.s3_url_thumb
+																	? portfolio.portfolio.s3_url_thumb
+																	: ''
+															}
+														/>
+													</div>
 												</CardContent>
 											</Card>
 										</div>

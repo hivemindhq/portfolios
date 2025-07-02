@@ -41,5 +41,6 @@ model Portfolio {
   award_ranking Int
   s3_url_thumb  String?
   s3_url        String?
+  usersFavorited Int[]
   owner         User    @relation(fields: [ownerId], references: [id])
 }

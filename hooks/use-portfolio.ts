@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import type PortfolioResponse from '@/pages/api/portfolios/ftc';
 import type GetMyPortfolioById from '@/pages/api/dashboard/get/[id]';
 import type GetFavorites from '@/pages/api/favorites';
+import HomepageResponse from '@/pages/api/portfolios/home';
 
 import {InferAPIResponse} from 'nextkit';
 import {NextkitClientException} from 'nextkit/client';
@@ -43,3 +44,12 @@ export function getFavorites() {
 
 // 	return swr;
 // }
+
+export function getHomepage() {
+	const swr = useSWR<
+		InferAPIResponse<typeof HomepageResponse, 'GET'> | null,
+		NextkitClientException
+	>(`/api/portfolios/home`, fetcher);
+
+	return swr;
+}
