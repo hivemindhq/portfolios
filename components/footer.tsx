@@ -84,7 +84,7 @@ export function Footer() {
 							<ul className="grid gap-2">
 								<li>
 									<Link
-										href="https://discord.gg/first-tech-challenge"
+										href="https://discord.gg/ftc"
 										target="_blank"
 										className="cursor-pointer text-sm font-[450] font-light text-zinc-400 duration-200 hover:text-zinc-200"
 									>
