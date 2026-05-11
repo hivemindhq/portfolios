@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
 				<div className="space-y-3">
 					<h1 className="text-2xl font-bold">Terms of Service</h1>
 					<em>
-						<p className="opacity-70">Last updated: 06/20/2024</p>
+						<p className="opacity-70">Last updated: 02/12/2026</p>
 					</em>
 				</div>
 				<div className="my-12 space-y-4">
@@ -82,6 +82,14 @@ export default function PrivacyPolicy() {
 						Users are encouraged to submit <b>reports</b> concerning content they believe warrants
 						attention. In instances where users claim ownership of reported content, the provision
 						of supporting evidence is required to establish ownership rights.
+					</p>
+					<h3 className="text-md font-bold pb-2 pt-4">License Grant to Hivemind Robotics</h3>
+					<p className="opacity-70">
+						By posting or uploading documentation, portfolios, or other content to the Service, you grant Hivemind
+						Robotics a worldwide, non-exclusive, royalty-free, transferable license to use, reproduce, distribute,
+						prepare derivative works of, display, and perform that content in connection with the Service. This
+						license ensures that Hivemind Robotics retains the authority to take action if your documentation is
+						distributed by others without your consent.
 					</p>
 					<h2 className="text-xl font-bold py-4">Prohibited Uses</h2>
 					<p className="opacity-70">
